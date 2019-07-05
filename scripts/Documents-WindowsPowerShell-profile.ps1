@@ -33,5 +33,5 @@ if ( $ROOT ) {
     . "$ROOT\.psprofile.ps1"
 }
 else {
-    . ~\Projects\.psprofile.ps1
+    . ~\Projects\.psprofile.ps1   # <<<<<<<<<< you may have to change this
 }
