@@ -6,7 +6,7 @@
 #
 # use:
 #
-#     . Apply-PSConsoleSettings.ps1 "$Project" [ -NoPrompt ]
+#     Apply-PSConsoleSettings.ps1 "$Project" [ -NoPrompt ]
 #
 # with:
 #
@@ -53,15 +53,15 @@
 #     in late PowerShell 5.1 versions.  This is a bug in PSReadLine that is solved
 #     in PowerShell 6 version
 #
-# valid colors:
+# colors:
 #
 #     Black                         # Legacy RGB (0,0,0)       "#000000"
 #     DarkBlue                      # Legacy RGB (0,0,128)     "#000080"
 #     DarkGreen                     # Legacy RGB (0,128,0)     "#008000"
 #     DarkCyan                      # Legacy RGB (0,128,128)   "#008080"
 #     DarkRed                       # Legacy RGB (128,0,0)     "#800000"
-#     DarkMagenta                   # Legacy RGB (128,0,128)   "#800080" <<< changed for PowerShell (1,36,86)     "#012456"
-#     DarkYellow                    # Legacy RGB (128,128,0)   "#808000" <<< changed for PowerShell (238,237,240) "#EEEDF0"
+#     DarkMagenta                   # Legacy RGB (1,36,86)     "#012456" <<< changed for PowerShell, from default (128,0,128) "#800080"
+#     DarkYellow                    # Legacy RGB (238,237,240) "#EEEDF0" <<< changed for PowerShell, from default (128,128,0) "#808000"
 #     Gray       # i.e. DarkWhite   # Legacy RGB (192,192,192) "#C0C0C0"
 #     DarkGray   # i.e. LightBlack  # Legacy RGB (128,128,128) "#808080"
 #     Blue                          # Legacy RGB (0,0,255)     "#0000FF"
@@ -83,7 +83,7 @@ param(
     [switch]$NoPrompt
 )
 
-if ( $Host.Name -ne 'ConsoleHost' ) {
+if ( $HOST.Name -ne 'ConsoleHost' ) {
     Write-Warning "This only works in the console host, not the ISE."
     return
 }
@@ -91,7 +91,7 @@ if ( $Host.Name -ne 'ConsoleHost' ) {
 #
 # set the colors for streams and tokens
 function ApplyPSConsoleSettings {
-    # we are using a function to avoid variables polluting the sourcing environment
+    # we are using a function to avoid variables polluting the environment when sourcing this
 
     $e = [char]27
 
@@ -153,45 +153,46 @@ function ApplyPSConsoleSettings {
     #
     # set the console title
     if ( "$Project" -ne "" ) {
-        $Host.UI.RawUI.WindowTitle = "Windows PowerShell for $Project"
+        $HOST.UI.RawUI.WindowTitle = "Windows PowerShell for $Project"
     }
     else {
-        $Host.UI.RawUI.WindowTitle = "Windows PowerShell"
+        $HOST.UI.RawUI.WindowTitle = "Windows PowerShell"
     }
     if ( $IsAdmin ) {
-        $Host.UI.RawUI.WindowTitle = "[Administrator] $( $Host.UI.RawUI.WindowTitle )"
+        $HOST.UI.RawUI.WindowTitle = "[Administrator] $( $HOST.UI.RawUI.WindowTitle )"
     }
 
     #
     # set the colors for the streams
-    if ( $Host.UI.RawUI.BackgroundColor -ne $CS.OutputBackgroundColor ) {
+    if ( $HOST.UI.RawUI.BackgroundColor -ne $CS.OutputBackgroundColor ) {
         $MustClearHost = $true
     }
 
-    $Host.UI.RawUI.ForegroundColor = $CS.OutputForegroundColor
-    $Host.UI.RawUI.BackgroundColor = $CS.OutputBackgroundColor
-    $Host.PrivateData.ErrorForegroundColor = $CS.ErrorForegroundColor
-    $Host.PrivateData.ErrorBackgroundColor = $CS.ErrorBackgroundColor
-    $Host.PrivateData.WarningForegroundColor = $CS.WarningForegroundColor
-    $Host.PrivateData.WarningBackgroundColor = $CS.WarningBackgroundColor
-    $Host.PrivateData.DebugForegroundColor = $CS.DebugForegroundColor
-    $Host.PrivateData.DebugBackgroundColor = $CS.DebugBackgroundColor
-    $Host.PrivateData.VerboseForegroundColor = $CS.VerboseForegroundColor
-    $Host.PrivateData.VerboseBackgroundColor = $CS.VerboseBackgroundColor
-    $Host.PrivateData.ProgressForegroundColor = $CS.ProgressForegroundColor
-    $Host.PrivateData.ProgressBackgroundColor = $CS.ProgressBackgroundColor
+    $HOST.UI.RawUI.ForegroundColor = $CS.OutputForegroundColor
+    $HOST.UI.RawUI.BackgroundColor = $CS.OutputBackgroundColor
+    $HOST.PrivateData.ErrorForegroundColor = $CS.ErrorForegroundColor
+    $HOST.PrivateData.ErrorBackgroundColor = $CS.ErrorBackgroundColor
+    $HOST.PrivateData.WarningForegroundColor = $CS.WarningForegroundColor
+    $HOST.PrivateData.WarningBackgroundColor = $CS.WarningBackgroundColor
+    $HOST.PrivateData.DebugForegroundColor = $CS.DebugForegroundColor
+    $HOST.PrivateData.DebugBackgroundColor = $CS.DebugBackgroundColor
+    $HOST.PrivateData.VerboseForegroundColor = $CS.VerboseForegroundColor
+    $HOST.PrivateData.VerboseBackgroundColor = $CS.VerboseBackgroundColor
+    $HOST.PrivateData.ProgressForegroundColor = $CS.ProgressForegroundColor
+    $HOST.PrivateData.ProgressBackgroundColor = $CS.ProgressBackgroundColor
 
     #
     # set the colors for the prompt
-    $env:PROMPT_FOREGROUNDCOLOR = $CS.PromptForegroundColor
-    $env:PROMPT_BACKGROUNDCOLOR = $CS.PromptBackgroundColor
+    $global:PROMPT_FOREGROUNDCOLOR = $CS.PromptForegroundColor
+    $global:PROMPT_BACKGROUNDCOLOR = $CS.PromptBackgroundColor
+
     if ( $IsAdmin ) {
-        $env:PROMPT_ADMIN_FOREGROUNDCOLOR = $CS.WarningForegroundColor
-        $env:PROMPT_ADMIN_BACKGROUNDCOLOR = $CS.WarningBackgroundColor
+        $global:PROMPT_ADMIN_FOREGROUNDCOLOR = $CS.WarningForegroundColor
+        $global:PROMPT_ADMIN_BACKGROUNDCOLOR = $CS.WarningBackgroundColor
     }
     else {
-        $env:PROMPT_ADMIN_FOREGROUNDCOLOR = $null
-        $env:PROMPT_ADMIN_BACKGROUNDCOLOR = $null
+        $global:PROMPT_ADMIN_FOREGROUNDCOLOR = $null
+        $global:PROMPT_ADMIN_BACKGROUNDCOLOR = $null
     }
 
     #
@@ -200,7 +201,7 @@ function ApplyPSConsoleSettings {
         # '$PSReadlineOptions' was introduced in PowerShell version 5
 
         $Current = Get-PSReadLineOption
-        if ( "$Current.CommandColor" -ne "" ) {
+        if ( "$current.CommandColor" -ne "" ) {
             # the color properties changed from late PowerShell 5.1 versions onward
 
             #
@@ -239,11 +240,11 @@ ApplyPSConsoleSettings
 #
 # set the colors for the prompt
 if ( -not $NoPrompt ) {
-    function Prompt {
-        if ( "$env:PROMPT_ADMIN_FOREGROUNDCOLOR" -ne "" ) {
-            Write-Host "[Administrator] " -NoNewline -ForegroundColor $env:PROMPT_ADMIN_FOREGROUNDCOLOR -BackgroundColor $env:PROMPT_ADMIN_BACKGROUNDCOLOR
+    function $global:Prompt {
+        if ( "$PROMPT_ADMIN_FOREGROUNDCOLOR" -ne "" ) {
+            Write-Host "[Administrator] " -NoNewline -ForegroundColor $PROMPT_ADMIN_FOREGROUNDCOLOR -BackgroundColor $PROMPT_ADMIN_BACKGROUNDCOLOR
         }
-        Write-Host "PS $( Get-Location )>" -NoNewline -ForegroundColor $env:PROMPT_FOREGROUNDCOLOR -BackgroundColor $env:PROMPT_BACKGROUNDCOLOR
+        Write-Host "PS $( Get-Location )>" -NoNewline -ForegroundColor $PROMPT_FOREGROUNDCOLOR -BackgroundColor $PROMPT_BACKGROUNDCOLOR
 
         return " "
     }
