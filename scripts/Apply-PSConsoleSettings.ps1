@@ -23,56 +23,89 @@
 # requires:
 #
 #     $ROOT/.psconsole.json = {
-#         "AdminColorScheme": {...}
 #         "UserColorScheme": {...}
-#         "DefaultColorScheme": {...}
+#         "AdminColorScheme": {...}
+#         "LegacyColorScheme": {...}
 #     }
 #
-# default psconsole-settings:
+# legacy Powershell color-scheme:
 #
 #     {
-#         "DefaultColorScheme": {
-#             "OutputForegroundColor": "DarkYellow",
-#             "OutputBackgroundColor": "DarkMagenta",
-#             "ErrorForegroundColor": "Red",
-#             "ErrorBackgroundColor": "Black",
-#             "WarningForegroundColor": "Yellow",
-#             "WarningBackgroundColor": "Black",
-#             "DebugForegroundColor": "Yellow",
-#             "DebugBackgroundColor": "Black",
-#             "VerboseForegroundColor": "Yellow",
-#             "VerboseBackgroundColor": "Black",
-#             "ProgressForegroundColor": "Yellow",
-#             "ProgressBackgroundColor": "DarkCyan",
+#         "LegacyColorScheme": {
+#             "StreamOutputForegroundColor": "DarkYellow",
+#             "StreamOutputBackgroundColor": "DarkMagenta",
+#             "StreamErrorForegroundColor": "Red",
+#             "StreamErrorBackgroundColor": "Black",
+#             "StreamWarningForegroundColor": "Yellow",
+#             "StreamWarningBackgroundColor": "Black",
+#             "StreamDebugForegroundColor": "Yellow",
+#             "StreamDebugBackgroundColor": "Black",
+#             "StreamVerboseForegroundColor": "Yellow",
+#             "StreamVerboseBackgroundColor": "Black",
+#             "StreamProgressForegroundColor": "Yellow",
+#             "StreamProgressBackgroundColor": "DarkCyan",
+#             "SyntaxCommandForegroundColor": "Yellow",
+#             "SyntaxCommandBackgroundColor": "DarkMagenta",
+#             "SyntaxCommentForegroundColor": "DarkGreen",
+#             "SyntaxCommentBackgroundColor": "DarkMagenta",
+#             "SyntaxContinuationPromptForegroundColor": "DarkYellow",
+#             "SyntaxContinuationPromptBackgroundColor": "DarkMagenta",
+#             "SyntaxDefaultForegroundColor": "DarkYellow",
+#             "SyntaxDefaultBackgroundColor": "DarkMagenta",
+#             "SyntaxEmphasisForegroundColor": "Cyan",
+#             "SyntaxEmphasisBackgroundColor": "DarkMagenta",
+#             "SyntaxErrorForegroundColor": "Red",
+#             "SyntaxErrorBackgroundColor": "DarkMagenta",
+#             "SyntaxKeywordForegroundColor": "Green",
+#             "SyntaxKeywordBackgroundColor": "DarkMagenta",
+#             "SyntaxMemberForegroundColor": "White",
+#             "SyntaxMemberBackgroundColor": "DarkMagenta",
+#             "SyntaxNumberForegroundColor": "White",
+#             "SyntaxNumberBackgroundColor": "DarkMagenta",
+#             "SyntaxOperatorForegroundColor": "DarkGray",
+#             "SyntaxOperatorBackgroundColor": "DarkMagenta",
+#             "SyntaxParameterForegroundColor": "DarkGray",
+#             "SyntaxParameterBackgroundColor": "DarkMagenta",
+#             "SyntaxSelectionForegroundColor": "DarkMagenta",
+#             "SyntaxSelectionBackgroundColor": "DarkYellow",
+#             "SyntaxStringForegroundColor": "DarkBlue",
+#             "SyntaxStringBackgroundColor": "DarkMagenta",
+#             "SyntaxTypeForegroundColor": "Gray",
+#             "SyntaxTypeBackgroundColor": "DarkMagenta",
+#             "SyntaxVariableForegroundColor": "Green",
+#             "SyntaxVariableBackgroundColor": "DarkMagenta",
 #             "PromptForegroundColor": "DarkYellow",
 #             "PromptBackgroundColor": "DarkMagenta"
 #         }
 #     }
 #
-#     Remark that changing 'ForegroundColor' and 'BackgroundColor' doesn't persist
-#     in late PowerShell 5.1 versions.  This is a bug in PSReadLine that is solved
-#     in PowerShell 6 version
+#     Remark that changing 'StreamOutputForegroundColor' and 'StreamOutputBackgroundColor' doesn't persist
+#     in late PowerShell 5.1 versions.  This is a bug in PSReadLine that is solved in PowerShell 6 version.
+#     These values are better changed by changing the ConsoleColors of the PowerShell shortcut
+#
+#     Remark that, although PowerShell allows using HEX color-codes, or ANSI VT100 color-codes for some of these items,
+#     This script is only able to understand the 16 PowerShell-colors
 #
 # colors:
 #
-#     Black                         # Legacy RGB (0,0,0)       "#000000"
-#     DarkBlue                      # Legacy RGB (0,0,128)     "#000080"
-#     DarkGreen                     # Legacy RGB (0,128,0)     "#008000"
-#     DarkCyan                      # Legacy RGB (0,128,128)   "#008080"
-#     DarkRed                       # Legacy RGB (128,0,0)     "#800000"
-#     DarkMagenta                   # Legacy RGB (1,36,86)     "#012456" <<< changed for PowerShell, from default (128,0,128) "#800080"
-#     DarkYellow                    # Legacy RGB (238,237,240) "#EEEDF0" <<< changed for PowerShell, from default (128,128,0) "#808000"
-#     Gray       # i.e. DarkWhite   # Legacy RGB (192,192,192) "#C0C0C0"
-#     DarkGray   # i.e. LightBlack  # Legacy RGB (128,128,128) "#808080"
-#     Blue                          # Legacy RGB (0,0,255)     "#0000FF"
-#     Green                         # Legacy RGB (0,255,0)     "#00FF00"
-#     Cyan                          # Legacy RGB (0,255,255)   "#00FFFF"
-#     Red                           # Legacy RGB (255,0,0)     "#FF0000"
-#     Magenta                       # Legacy RGB (255,0,255)   "#Ff00FF"
-#     Yellow                        # Legacy RGB (255,255,0)   "#FFFF00"
-#     White                         # Legacy RGB (255,255,255) "#FFFFFF"
+#     Black                            # Colorized color-scheme: used as Screen Background
+#     DarkBlue
+#     DarkGreen
+#     DarkCyan
+#     DarkRed
+#     DarkMagenta                      ##### Legacy Powershell color-scheme: used as Screen Background
+#     DarkYellow                       ##### Legacy Powershell color-scheme: used as Screen Text
+#     Gray       # i.e. 'DarkWhite'    # Colorized color-scheme: used as Normal Screen Text
+#     DarkGray   # i.e. 'LightBlack'   # Colorized color-scheme: used as Dim Screen Text & Popup Text
+#     Blue       # 'Orange' in Colorized color-scheme
+#     Green
+#     Cyan                             # Colorized color-scheme: used as Bright Screen Text
+#     Red
+#     Magenta    # 'Violet' in Colorized color-scheme
+#     Yellow
+#     White                            # Colorized color-scheme: used as Popup Background
 #
-#     Remark that these colors don't necessarily are in-line with their name.
+#     Remark that these colors aren't necessarily in-line with their name.
 #     The effective colors are set in the registry and the properties of the shortcut
 #     to powershell.exe (ref: .https://devblogs.microsoft.com/commandline/understanding-windows-console-host-settings)
 #     The boxes in the shortcut's properties (left-to-right) show the colors
@@ -82,6 +115,8 @@ param(
     [parameter(position=0)]$Project,
     [switch]$NoPrompt
 )
+
+$ErrorActionPreference = 'Stop'
 
 if ( $HOST.Name -ne 'ConsoleHost' ) {
     Write-Warning "This only works in the console host, not the ISE."
@@ -137,17 +172,24 @@ function ApplyPSConsoleSettings {
     # pickup the console settings and set console title
     $PSConsoleSettings = $( Get-Content -Raw -Path "$ROOT/.psconsole.json" | ConvertFrom-Json )
 
-    $CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
-    $IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+    if ( ( $HOST.UI.RawUI.ForegroundColor -eq 'DarkYellow' ) -and ( $HOST.UI.RawUI.BackgroundColor -eq 'DarkMagenta' ) ) {
+        # we are working with a legacy Powershell instance
 
-    if ( $IsAdmin ) {
-        $CS = $PSConsoleSettings.AdminColorScheme
+        $CS = $PSConsoleSettingsLegacyColorScheme
     }
     else {
-        $CS = $PSConsoleSettings.UserColorScheme
-    }
-    if ( -not $CS ) {
-        $CS = $PSConsoleSettings.DefaultColorScheme
+        # we are working with a modified Powershell instance
+        # we assume a "Colorized" color-scheme is being used for the console
+
+        $CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+        $IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+
+        if ( $IsAdmin ) {
+            $CS = $PSConsoleSettings.AdminColorScheme
+        }
+        else {
+            $CS = $PSConsoleSettings.UserColorScheme
+        }
     }
 
     #
@@ -164,36 +206,22 @@ function ApplyPSConsoleSettings {
 
     #
     # set the colors for the streams
-    if ( $HOST.UI.RawUI.BackgroundColor -ne $CS.OutputBackgroundColor ) {
+    if ( $HOST.UI.RawUI.BackgroundColor -ne $CS.StreamOutputBackgroundColor ) {
         $MustClearHost = $true
     }
 
-    $HOST.UI.RawUI.ForegroundColor = $CS.OutputForegroundColor
-    $HOST.UI.RawUI.BackgroundColor = $CS.OutputBackgroundColor
-    $HOST.PrivateData.ErrorForegroundColor = $CS.ErrorForegroundColor
-    $HOST.PrivateData.ErrorBackgroundColor = $CS.ErrorBackgroundColor
-    $HOST.PrivateData.WarningForegroundColor = $CS.WarningForegroundColor
-    $HOST.PrivateData.WarningBackgroundColor = $CS.WarningBackgroundColor
-    $HOST.PrivateData.DebugForegroundColor = $CS.DebugForegroundColor
-    $HOST.PrivateData.DebugBackgroundColor = $CS.DebugBackgroundColor
-    $HOST.PrivateData.VerboseForegroundColor = $CS.VerboseForegroundColor
-    $HOST.PrivateData.VerboseBackgroundColor = $CS.VerboseBackgroundColor
-    $HOST.PrivateData.ProgressForegroundColor = $CS.ProgressForegroundColor
-    $HOST.PrivateData.ProgressBackgroundColor = $CS.ProgressBackgroundColor
-
-    #
-    # set the colors for the prompt
-    $global:PROMPT_FOREGROUNDCOLOR = $CS.PromptForegroundColor
-    $global:PROMPT_BACKGROUNDCOLOR = $CS.PromptBackgroundColor
-
-    if ( $IsAdmin ) {
-        $global:PROMPT_ADMIN_FOREGROUNDCOLOR = $CS.WarningForegroundColor
-        $global:PROMPT_ADMIN_BACKGROUNDCOLOR = $CS.WarningBackgroundColor
-    }
-    else {
-        $global:PROMPT_ADMIN_FOREGROUNDCOLOR = $null
-        $global:PROMPT_ADMIN_BACKGROUNDCOLOR = $null
-    }
+    $HOST.UI.RawUI.ForegroundColor = $CS.StreamOutputForegroundColor
+    $HOST.UI.RawUI.BackgroundColor = $CS.StreamOutputBackgroundColor
+    $HOST.PrivateData.ErrorForegroundColor = $CS.StreamErrorForegroundColor
+    $HOST.PrivateData.ErrorBackgroundColor = $CS.StreamErrorBackgroundColor
+    $HOST.PrivateData.WarningForegroundColor = $CS.StreamWarningForegroundColor
+    $HOST.PrivateData.WarningBackgroundColor = $CS.StreamWarningBackgroundColor
+    $HOST.PrivateData.DebugForegroundColor = $CS.StreamDebugForegroundColor
+    $HOST.PrivateData.DebugBackgroundColor = $CS.StreamDebugBackgroundColor
+    $HOST.PrivateData.VerboseForegroundColor = $CS.StreamVerboseForegroundColor
+    $HOST.PrivateData.VerboseBackgroundColor = $CS.StreamVerboseBackgroundColor
+    $HOST.PrivateData.ProgressForegroundColor = $CS.StreamProgressForegroundColor
+    $HOST.PrivateData.ProgressBackgroundColor = $CS.StreamProgressBackgroundColor
 
     #
     # set the colors for the syntax-highlighting
@@ -205,28 +233,134 @@ function ApplyPSConsoleSettings {
             # the color properties changed from late PowerShell 5.1 versions onward
 
             #
-            # change the background colors to the 'OutputBackgroundColor'
+            # prepare VT code for syntax colors
+            $VTCommand = "$e[$( $VTForegroundColors.$( $CS.SyntaxCommandForegroundColor ) )"
+            if ( $CS.SyntaxCommandBackgroundColor -ne $StreamOutputBackgroundColor ) {
+                $VTCommand = $VTCommand + ";$( $VTForegroundColors.$( $CS.SyntaxCommandBackgroundColor ) )"
+            }
+            $VTCommand = $VTCommand + "m"
+
+            $VTComment = "$e[$( $VTForegroundColors.$( $CS.SyntaxCommentForegroundColor ) )" 
+            if ( $CS.SyntaxCommentBackgroundColor -ne $StreamOutputBackgroundColor ) {
+                $VTComment = $VTComment + ";$( $VTForegroundColors.$( $CS.SyntaxCommentBackgroundColor ) )"
+            }
+            $VTComment = $VTComment + "m"
+
+            $VTContinuationPrompt = "$e[$( $VTForegroundColors.$( $CS.SyntaxContinuationPromptForegroundColor ) )" 
+            if ( $CS.SyntaxContinuationPromptBackgroundColor -ne $StreamOutputBackgroundColor ) {
+                $VTContinuationPrompt = $VTContinuationPrompt + ";$( $VTForegroundColors.$( $CS.SyntaxContinuationPromptBackgroundColor ) )"
+            }
+            $VTContinuationPrompt = $VTContinuationPrompt + "m"
+
+            $VTDefault = "$e[$( $VTForegroundColors.$( $CS.SyntaxDefaultForegroundColor ) )" 
+            if ( $CS.SyntaxDefaultBackgroundColor -ne $StreamOutputBackgroundColor ) {
+                $VTDefault = $VTDefault + ";$( $VTForegroundColors.$( $CS.SyntaxDefaultBackgroundColor ) )"
+            }
+            $VTDefault = $VTDefault + "m"
+
+            $VTEmphasis = "$e[$( $VTForegroundColors.$( $CS.SyntaxEmphasisForegroundColor ) )" 
+            if ( $CS.SyntaxEmphasisBackgroundColor -ne $StreamOutputBackgroundColor ) {
+                $VTEmphasis = $VTEmphasis + ";$( $VTForegroundColors.$( $CS.SyntaxEmphasisBackgroundColor ) )"
+            }
+            $VTEmphasis = $VTEmphasis + "m"
+
+            $VTError = "$e[$( $VTForegroundColors.$( $CS.SyntaxErrorForegroundColor ) )" 
+            if ( $CS.SyntaxErrorBackgroundColor -ne $StreamOutputBackgroundColor ) {
+                $VTError = $VTError + ";$( $VTForegroundColors.$( $CS.SyntaxErrorBackgroundColor ) )"
+            }
+            $VTError = $VTError + "m"
+
+            $VTKeyword = "$e[$( $VTForegroundColors.$( $CS.SyntaxKeywordForegroundColor ) )" 
+            if ( $CS.SyntaxKeywordBackgroundColor -ne $StreamOutputBackgroundColor ) {
+                $VTKeyword = $VTKeyword + ";$( $VTForegroundColors.$( $CS.SyntaxKeywordBackgroundColor ) )"
+            }
+            $VTKeyword = $VTKeyword + "m"
+
+            $VTMember = "$e[$( $VTForegroundColors.$( $CS.SyntaxMemberForegroundColor ) )" 
+            if ( $CS.SyntaxMemberBackgroundColor -ne $StreamOutputBackgroundColor ) {
+                $VTMember = $VTMember + ";$( $VTForegroundColors.$( $CS.SyntaxMemberBackgroundColor ) )"
+            }
+            $VTMember = $VTMember + "m"
+
+            $VTNumber = "$e[$( $VTForegroundColors.$( $CS.SyntaxNumberForegroundColor ) )" 
+            if ( $CS.SyntaxNumberBackgroundColor -ne $StreamOutputBackgroundColor ) {
+                $VTNumber = $VTNumber + ";$( $VTForegroundColors.$( $CS.SyntaxNumberBackgroundColor ) )"
+            }
+            $VTNumber = $VTNumber + "m"
+
+            $VTOperator = "$e[$( $VTForegroundColors.$( $CS.SyntaxOperatorForegroundColor ) )" 
+            if ( $CS.SyntaxOperatorBackgroundColor -ne $StreamOutputBackgroundColor ) {
+                $VTOperator = $VTOperator + ";$( $VTForegroundColors.$( $CS.SyntaxOperatorBackgroundColor ) )"
+            }
+            $VTOperator = $VTOperator + "m"
+
+            $VTParameter = "$e[$( $VTForegroundColors.$( $CS.SyntaxParameterForegroundColor ) )" 
+            if ( $CS.SyntaxParameterBackgroundColor -ne $StreamOutputBackgroundColor ) {
+                $VTParameter = $VTParameter + ";$( $VTForegroundColors.$( $CS.SyntaxParameterBackgroundColor ) )"
+            }
+            $VTParameter = $VTParameter + "m"
+
+            $VTSelection = "$e[$( $VTForegroundColors.$( $CS.SyntaxSelectionForegroundColor ) )" 
+            if ( $CS.SyntaxSelectionBackgroundColor -ne $StreamOutputBackgroundColor ) {
+                $VTSelection = $VTSelection + ";$( $VTForegroundColors.$( $CS.SyntaxSelectionBackgroundColor ) )"
+            }
+            $VTSelection = $VTSelection + "m"
+
+            $VTString = "$e[$( $VTForegroundColors.$( $CS.SyntaxStringForegroundColor ) )" 
+            if ( $CS.SyntaxStringBackgroundColor -ne $StreamOutputBackgroundColor ) {
+                $VTString = $VTString + ";$( $VTForegroundColors.$( $CS.SyntaxStringBackgroundColor ) )"
+            }
+            $VTString = $VTString + "m"
+
+            $VTType = "$e[$( $VTForegroundColors.$( $CS.SyntaxTypeForegroundColor ) )" 
+            if ( $CS.SyntaxTypeBackgroundColor -ne $StreamOutputBackgroundColor ) {
+                $VTType = $VTType + ";$( $VTForegroundColors.$( $CS.SyntaxTypeBackgroundColor ) )"
+            }
+            $VTType = $VTType + "m"
+
+            $VTVariable = "$e[$( $VTForegroundColors.$( $CS.SyntaxVariableForegroundColor ) )" 
+            if ( $CS.SyntaxVariableBackgroundColor -ne $StreamOutputBackgroundColor ) {
+                $VTVariable = $VTVariable + ";$( $VTForegroundColors.$( $CS.SyntaxVariableBackgroundColor ) )"
+            }
+            $VTVariable = $VTVariable + "m"
+
+            #
+            # change the background colors
             $PSReadlineOptions = @{
                 Colors = @{
-                    Command = $Current.CommandColor -replace ';[0-9]*m', 'm' -replace 'm', ";$( $VTBackgroundColors.$( $CS.OutputBackgroundColor ) )m"
-                    Comment = $Current.CommentColor -replace ';[0-9]*m', 'm' -replace 'm', ";$( $VTBackgroundColors.$( $CS.OutputBackgroundColor ) )m"
-                    ContinuationPrompt = $Current.ContinuationPromptColor -replace ';[0-9]*m', 'm' -replace 'm', ";$( $VTBackgroundColors.$( $CS.OutputBackgroundColor ) )m"
-                    Default = $Current.DefaultTokenColor -replace ';[0-9]*m', 'm' -replace 'm', ";$( $VTBackgroundColors.$( $CS.OutputBackgroundColor ) )m"
-                    Emphasis = $Current.EmphasisColor -replace ';[0-9]*m', 'm' -replace 'm', ";$( $VTBackgroundColors.$( $CS.OutputBackgroundColor ) )m"
-                    Error = $Current.ErrorColor -replace ';[0-9]*m', 'm' -replace 'm', ";$( $VTBackgroundColors.$( $CS.OutputBackgroundColor ) )m"
-                    Keyword = $Current.KeywordColor -replace ';[0-9]*m', 'm' -replace 'm', ";$( $VTBackgroundColors.$( $CS.OutputBackgroundColor ) )m"
-                    Member = $Current.MemberColor -replace ';[0-9]*m', 'm' -replace 'm', ";$( $VTBackgroundColors.$( $CS.OutputBackgroundColor ) )m"
-                    Number = $Current.NumberColor -replace ';[0-9]*m', 'm' -replace 'm', ";$( $VTBackgroundColors.$( $CS.OutputBackgroundColor ) )m"
-                    Operator = $Current.OperatorColor -replace ';[0-9]*m', 'm' -replace 'm', ";$( $VTBackgroundColors.$( $CS.OutputBackgroundColor ) )m"
-                    Parameter = $Current.ParameterColor -replace ';[0-9]*m', 'm' -replace 'm', ";$( $VTBackgroundColors.$( $CS.OutputBackgroundColor ) )m"
-                    #Selection     # the selection color typically has a background that's different from the others => we don't touch it
-                    String = $Current.StringColor -replace ';[0-9]*m', 'm' -replace 'm', ";$( $VTBackgroundColors.$( $CS.OutputBackgroundColor ) )m"
-                    Type = $Current.TypeColor -replace ';[0-9]*m', 'm' -replace 'm', ";$( $VTBackgroundColors.$( $CS.OutputBackgroundColor ) )m"
-                    Variable = $Current.VariableColor -replace ';[0-9]*m', 'm' -replace 'm', ";$( $VTBackgroundColors.$( $CS.OutputBackgroundColor ) )m"
+                    Command = $VTCommand
+                    Comment = $VTComment
+                    ContinuationPrompt = $VTContinuationPrompt
+                    Default = $VTDefault 
+                    Emphasis = $VTEmphasis 
+                    Error = $VTError 
+                    Keyword = $VTKeyword 
+                    Member = $VTMember 
+                    Number = $VTNumber 
+                    Operator = $VTOperator
+                    Parameter = $VTParameter 
+                    Selection = $VTSelection 
+                    String = $VTString 
+                    Type = $VTType 
+                    Variable = $VTVariable
                 }
             }
             Set-PSReadlineOption @PSReadlineOptions
         }
+    }
+
+    #
+    # set the colors for the prompt
+    $global:PROMPT_FOREGROUNDCOLOR = $CS.PromptForegroundColor
+    $global:PROMPT_BACKGROUNDCOLOR = $CS.PromptBackgroundColor
+
+    if ( $IsAdmin ) {
+        $global:PROMPT_ADMIN_FOREGROUNDCOLOR = $CS.StreamWarningForegroundColor
+        $global:PROMPT_ADMIN_BACKGROUNDCOLOR = $CS.StreamWarningBackgroundColor
+    }
+    else {
+        $global:PROMPT_ADMIN_FOREGROUNDCOLOR = $null
+        $global:PROMPT_ADMIN_BACKGROUNDCOLOR = $null
     }
 
     #
@@ -240,7 +374,7 @@ ApplyPSConsoleSettings
 #
 # set the colors for the prompt
 if ( -not $NoPrompt ) {
-    function $global:Prompt {
+    function global:Prompt {
         if ( "$PROMPT_ADMIN_FOREGROUNDCOLOR" -ne "" ) {
             Write-Host "[Administrator] " -NoNewline -ForegroundColor $PROMPT_ADMIN_FOREGROUNDCOLOR -BackgroundColor $PROMPT_ADMIN_BACKGROUNDCOLOR
         }

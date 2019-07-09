@@ -86,11 +86,8 @@ Light Backgrounds             | Popup          | RGB                            
 
 More Backgrounds    | Popup               | RGB                              | HSV
 :-------------------|:--------------------|:---------------------------------|:---
-`Powershell-Blue`   | `Powershell-White`  | `#001636` &emsp; (0, 22, 54)     | (215, 99%, 34%)
-`Powershell-White`  | `Powershell-Blue`   | `#eeedf0` &emsp; (238, 237, 240) | (260, 1%, 94%)
-
-- `Powershell-Blue` is the standard PowerShell console background.
-- `Powershell-White` is the standard Powershell console foreground.
+`Powershell-Dark`   | `Powershell-Light`  | `#001636` &emsp; (0, 22, 54)     | (215, 100%, 21%)
+`Powershell-Light`  | `Powershell-Dark`   | `#ece3fc` &emsp; (236, 227, 252) | (260, 10%, 99%)
 
 
  BrightText for Backgrounds   | RGB                              | HSV
@@ -107,8 +104,8 @@ More Backgrounds    | Popup               | RGB                              | H
 `Colorized Light-Azure`       | `#421307` &emsp; (66, 19, 7)     | (12, 90%, 26%)
 `Colorized Light-Violet`      | `#364207` &emsp; (54, 66, 7)     | (72, 90%, 26%)
 `Colorized Light-Rose`        | `#074213` &emsp; (7, 66, 19)     | (132, 90%, 26%)
-`Powershell-Blue`             | `#eeedf0` &emsp; (238, 237, 240) | (260, 1%, 94%)
-`Powershell-White`            | `#001636` &emsp; (0, 22, 54)     | (215, 99%, 34%)
+`Powershell-Dark`             | `#ece3fc` &emsp; (236, 227, 252) | (260, 10%, 99%)
+`Powershell-Light`            | `#001636` &emsp; (0, 22, 54)     | (215, 100%, 21%)
 
 
 <br/>
