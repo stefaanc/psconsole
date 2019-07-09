@@ -27,10 +27,12 @@ Name               | Solarized Dark | RGB                        | HSV
 `ScreenBackground` | `base03` | `#002b36` &emsp; (0, 43, 54)     | (192, 100%, 21%)
 `PopupBackground`  | `base3`  | `#fdf6e3` &emsp; (253, 246, 227) | (44, 10%, 99%)
 
+
 Name               | Solarized Light | RGB                       | HSV
 :------------------|:---------|:---------------------------------|:---
 `ScreenBackground` | `base3`  | `#fdf6e3` &emsp; (253, 246, 227) | (44, 10%, 99%)
 `PopupBackground`  | `base03` | `#002b36` &emsp; (0, 43, 54)     | (193, 100%, 21%)
+
 
 <br/>
 
@@ -44,6 +46,7 @@ Name                           | Solarized Dark | RGB                        | H
 `PopupText` (=`DimScreenText`) | `base0`  | `#839496` &emsp; (131, 148, 150) | (186, 13%, 59%)
 `DimPopupText` (=`ScreenText`) | `base00` | `#657b83` &emsp; (101, 123, 131) | (195, 23%, 51%)
 
+
 Name                           | Solarized Light | RGB                       | HSV
 :------------------------------|:---------|:---------------------------------|:---
 `DimScreenText` (=`PopupText`) | `base0`  | `#839496` &emsp; (131, 148, 150) | (186, 13%, 59%)
@@ -52,32 +55,33 @@ Name                           | Solarized Light | RGB                       | H
 `PopupText` (=`DimScreenText`) | `base00` | `#657b83` &emsp; (101, 123, 131) | (195, 23%, 51%)
 `DimPopupText` (=`ScreenText`) | `base0`  | `#839496` &emsp; (131, 148, 150) | (186, 13%, 59%)
 
+
 <br/>
 
 ### Alternative Background Colors
 
-Dark Backgrounds       | Popup               | RGB                          | HSV
-:----------------------|:------------------- |:-----------------------------|:---
-`Rainbow Dark-Red`     | `Light-Azure`       | `#360b00` &emsp; (54, 11, 0) | (12, 100%, 21%)
-`Rainbow Dark-Yellow`  | `Light-Violet`      | `#2b3600` &emsp; (43, 54, 0) | (72, 100%, 21%)
-`Rainbow Dark-Green`   | `Light-Rose`        | `#00360b` &emsp; (0, 54, 11) | (132, 100%, 21%)
-`Rainbow Dark-Cyan`    | `Light-Orange`      | `#002b36` &emsp; (0, 43, 54) | (192, 100%, 21%)
-`Rainbow Dark-Blue`    | `Light-Chartreuse`  | `#0B0036` &emsp; (11, 0, 54) | (252, 100%, 21%)
-`Rainbow Dark-Magenta` | `Light-SpringGreen` | `#36002B` &emsp; (54, 0, 43) | (312, 100%, 21%)
+Dark Backgrounds         | Popup               | RGB                          | HSV
+:------------------------|:------------------- |:-----------------------------|:---
+`Colorized Dark-Red`     | `Light-Azure`       | `#360b00` &emsp; (54, 11, 0) | (12, 100%, 21%)
+`Colorized Dark-Yellow`  | `Light-Violet`      | `#2b3600` &emsp; (43, 54, 0) | (72, 100%, 21%)
+`Colorized Dark-Green`   | `Light-Rose`        | `#00360b` &emsp; (0, 54, 11) | (132, 100%, 21%)
+`Colorized Dark-Cyan`    | `Light-Orange`      | `#002b36` &emsp; (0, 43, 54) | (192, 100%, 21%)
+`Colorized Dark-Blue`    | `Light-Chartreuse`  | `#0b0036` &emsp; (11, 0, 54) | (252, 100%, 21%)
+`Colorized Dark-Magenta` | `Light-SpringGreen` | `#36002b` &emsp; (54, 0, 43) | (312, 100%, 21%)
 
-- `Rainbow Dark-Blue` is based on Solarized Dark
+- `Colorized Dark-Blue` is based on Solarized Dark
 
 
-Light Backgrounds           | Popup          | RGB                              | HSV
-:---------------------------|:---------------|:---------------------------------|:---
-`Rainbow Light-Orange`      | `Dark-Cyan`    | `#fdf6e3` &emsp; (253, 246, 227) | (44, 10%, 99%)
-`Rainbow Light-Chartreuse`  | `Dark-Blue`    | `#eafde3` &emsp; (234, 253, 227) | (104, 10%, 99%)
-`Rainbow Light-SpringGreen` | `Dark-Magenta` | `#e3fdf6` &emsp; (227, 253, 246) | (164, 10%, 99%)
-`Rainbow Light-Azure`       | `Dark-Red`     | `#e3eafd` &emsp; (227, 234, 253) | (224, 10%, 99%)
-`Rainbow Light-Violet`      | `Dark-Yellow`  | `#f6e3fd` &emsp; (246, 227, 253) | (284, 10%, 99%)
-`Rainbow Light-Rose`        | `Dark-Green`   | `#fde3ea` &emsp; (253, 227, 234) | (344, 10%, 99%)
+Light Backgrounds             | Popup          | RGB                              | HSV
+:-----------------------------|:---------------|:---------------------------------|:---
+`Colorized Light-Orange`      | `Dark-Cyan`    | `#fdf6e3` &emsp; (253, 246, 227) | (44, 10%, 99%)
+`Colorized Light-Chartreuse`  | `Dark-Blue`    | `#eafde3` &emsp; (234, 253, 227) | (104, 10%, 99%)
+`Colorized Light-SpringGreen` | `Dark-Magenta` | `#e3fdf6` &emsp; (227, 253, 246) | (164, 10%, 99%)
+`Colorized Light-Azure`       | `Dark-Red`     | `#e3eafd` &emsp; (227, 234, 253) | (224, 10%, 99%)
+`Colorized Light-Violet`      | `Dark-Yellow`  | `#f6e3fd` &emsp; (246, 227, 253) | (284, 10%, 99%)
+`Colorized Light-Rose`        | `Dark-Green`   | `#fde3ea` &emsp; (253, 227, 234) | (344, 10%, 99%)
 
-- `Rainbow Light-Orange` is based on Solarized Light
+- `Colorized Light-Orange` is based on Solarized Light
 
 
 More Backgrounds    | Popup               | RGB                              | HSV
@@ -88,22 +92,24 @@ More Backgrounds    | Popup               | RGB                              | H
 - `Powershell-Blue` is the standard PowerShell console background.
 - `Powershell-White` is the standard Powershell console foreground.
 
- BrightText for Backgrounds | RGB                              | HSV
-:---------------------------|:---------------------------------|:---
-`Rainbow Dark-Red`          | `#d5dbee` &emsp; (213, 219, 238) | (225, 10%, 93%)
-`Rainbow Dark-Yellow`       | `#e8d5ee` &emsp; (232, 213, 238) | (285, 10%, 93%)
-`Rainbow Dark-Green`        | `#eed5db` &emsp; (238, 213, 219) | (345, 10%, 93%)
-`Rainbow Dark-Cyan`         | `#eee8d5` &emsp; (238, 232, 213) | (45, 10%, 93%)
-`Rainbow Dark-Blue`         | `#dbeed5` &emsp; (219, 238, 213) | (105, 10%, 93%)
-`Rainbow Dark-Magenta`      | `#d5eee8` &emsp; (213, 238, 232) | (165, 10%, 93%)
-`Rainbow Light-Orange`      | `#073642` &emsp; (7, 54, 66)     | (192, 90%, 26%)
-`Rainbow Light-Chartreuse`  | `#130742` &emsp; (19, 7, 66)     | (252, 90%, 26%)
-`Rainbow Light-SpringGreen` | `#420736` &emsp; (66, 7, 54)     | (312, 90%, 26%)
-`Rainbow Light-Azure`       | `#421307` &emsp; (66, 19, 7)     | (12, 90%, 26%)
-`Rainbow Light-Violet`      | `#364207` &emsp; (54, 66, 7)     | (72, 90%, 26%)
-`Rainbow Light-Rose`        | `#074213` &emsp; (7, 66, 19)     | (132, 90%, 26%)
-`Powershell-Blue`           | `#eeedf0` &emsp; (238, 237, 240) | (260, 1%, 94%)
-`Powershell-White`          | `#001636` &emsp; (0, 22, 54)     | (215, 99%, 34%)
+
+ BrightText for Backgrounds   | RGB                              | HSV
+:-----------------------------|:---------------------------------|:---
+`Colorized Dark-Red`          | `#d5dbee` &emsp; (213, 219, 238) | (225, 10%, 93%)
+`Colorized Dark-Yellow`       | `#e8d5ee` &emsp; (232, 213, 238) | (285, 10%, 93%)
+`Colorized Dark-Green`        | `#eed5db` &emsp; (238, 213, 219) | (345, 10%, 93%)
+`Colorized Dark-Cyan`         | `#eee8d5` &emsp; (238, 232, 213) | (45, 10%, 93%)
+`Colorized Dark-Blue`         | `#dbeed5` &emsp; (219, 238, 213) | (105, 10%, 93%)
+`Colorized Dark-Magenta`      | `#d5eee8` &emsp; (213, 238, 232) | (165, 10%, 93%)
+`Colorized Light-Orange`      | `#073642` &emsp; (7, 54, 66)     | (192, 90%, 26%)
+`Colorized Light-Chartreuse`  | `#130742` &emsp; (19, 7, 66)     | (252, 90%, 26%)
+`Colorized Light-SpringGreen` | `#420736` &emsp; (66, 7, 54)     | (312, 90%, 26%)
+`Colorized Light-Azure`       | `#421307` &emsp; (66, 19, 7)     | (12, 90%, 26%)
+`Colorized Light-Violet`      | `#364207` &emsp; (54, 66, 7)     | (72, 90%, 26%)
+`Colorized Light-Rose`        | `#074213` &emsp; (7, 66, 19)     | (132, 90%, 26%)
+`Powershell-Blue`             | `#eeedf0` &emsp; (238, 237, 240) | (260, 1%, 94%)
+`Powershell-White`            | `#001636` &emsp; (0, 22, 54)     | (215, 99%, 34%)
+
 
 <br/>
 
@@ -136,35 +142,35 @@ Name             | RGB                           | HSV
 
 The following are definitions for the colors of other sources.  These can be used but they are not mapped on the 16 base colors, so one needs to use the RGB-hex code or find a corresponding VT100 code that is close to it.
 
-Name             | RGB                            | HSV
-:----------------|:-------------------------------|:---
-`RGBRed`         | `#ff0000` &emsp; (255, 0, 0)   | (0, 100%, 100%)
-`RGBOrange`      | `#ff8000` &emsp; (255, 128, 0) | (30, 100%, 100%)
-`RGBYellow`      | `#ffff00` &emsp; (255, 255, 0) | (60, 100%, 100%)
-`RGBChartreuse`  | `#80ff00` &emsp; (128, 255, 0) | (90, 100%, 100%)
-`RGBGreen`       | `#00ff00` &emsp; (0, 255, 0)   | (120, 100%, 100%)
-`RGBSpringGreen` | `#00ff80` &emsp; (0, 255, 128) | (150, 100%, 100%)
-`RGBCyan`        | `#00ffff` &emsp; (0, 255, 255) | (180, 100%, 100%)
-`RGBAzure`       | `#0080ff` &emsp; (0, 128, 255) | (210, 100%, 100%)
-`RGBBlue`        | `#0000ff` &emsp; (0, 0, 255)   | (240, 100%, 100%)
-`RGBViolet`      | `#8000ff` &emsp; (128, 0, 255) | (270, 100%, 100%)
-`RGBMagenta`     | `#ff00ff` &emsp; (255, 0, 255) | (300, 100%, 100%)
-`RGBRose`        | `#ff0080` &emsp; (255, 0, 128) | (330, 100%, 100%)
+Name              | RGB                            | HSV
+:-----------------|:-------------------------------|:---
+`RGB Red`         | `#ff0000` &emsp; (255, 0, 0)   | (0, 100%, 100%)
+`RGB Orange`      | `#ff8000` &emsp; (255, 128, 0) | (30, 100%, 100%)
+`RGB Yellow`      | `#ffff00` &emsp; (255, 255, 0) | (60, 100%, 100%)
+`RGB Chartreuse`  | `#80ff00` &emsp; (128, 255, 0) | (90, 100%, 100%)
+`RGB Green`       | `#00ff00` &emsp; (0, 255, 0)   | (120, 100%, 100%)
+`RGB SpringGreen` | `#00ff80` &emsp; (0, 255, 128) | (150, 100%, 100%)
+`RGB Cyan`        | `#00ffff` &emsp; (0, 255, 255) | (180, 100%, 100%)
+`RGB Azure`       | `#0080ff` &emsp; (0, 128, 255) | (210, 100%, 100%)
+`RGB Blue`        | `#0000ff` &emsp; (0, 0, 255)   | (240, 100%, 100%)
+`RGB Violet`      | `#8000ff` &emsp; (128, 0, 255) | (270, 100%, 100%)
+`RGB Magenta`     | `#ff00ff` &emsp; (255, 0, 255) | (300, 100%, 100%)
+`RGB Rose`        | `#ff0080` &emsp; (255, 0, 128) | (330, 100%, 100%)
 
-Name             | RGB                             | HSV
-:----------------|:--------------------------------|:---
-`RYBRed`         | `#ff0000` &emsp; (255, 0, 0)    | (0, 100%, 100%)
-`RYBVermilion`   | `#ff4000` &emsp; (255, 64, 0)   | (15, 100%, 100%)
-`RYBOrange`      | `#ff8000` &emsp; (255, 128, 0)  | (30, 100%, 100%)
-`RYBAmber`       | `#ffbf00` &emsp; (255, 191, 0)  | (45, 100%, 100%)
-`RYBYellow`      | `#ffff00` &emsp; (255, 255, 0)  | (60, 100%, 100%)
-`RYBChartreuse`  | `#81d41a` &emsp; (129, 212, 26) | (87, 88%, 83%)
-`RYBGreen`       | `#00a933` &emsp; (0, 169, 51)   | (138, 100%, 66%)
-`RYBTeal`        | `#158466` &emsp; (21, 132, 102) | (163, 84%, 52%)
-`RYBBlue`        | `#2a6099` &emsp; (42, 96, 153)  | (210, 73%, 60%)
-`RYBViolet`      | `#55308d` &emsp; (85, 48, 141)  | (264, 66%, 55%)
-`RYBPurple`      | `#800080` &emsp; (128, 0, 128)  | (300, 100%, 50%)
-`RYBMagenta`     | `#bf0041` &emsp; (191, 0, 65)   | (340, 100%, 75%)
+Name              | RGB                             | HSV
+:-----------------|:--------------------------------|:---
+`RYB Red`         | `#ff0000` &emsp; (255, 0, 0)    | (0, 100%, 100%)
+`RYB Vermilion`   | `#ff4000` &emsp; (255, 64, 0)   | (15, 100%, 100%)
+`RYB Orange`      | `#ff8000` &emsp; (255, 128, 0)  | (30, 100%, 100%)
+`RYB Amber`       | `#ffbf00` &emsp; (255, 191, 0)  | (45, 100%, 100%)
+`RYB Yellow`      | `#ffff00` &emsp; (255, 255, 0)  | (60, 100%, 100%)
+`RYB Chartreuse`  | `#81d41a` &emsp; (129, 212, 26) | (87, 88%, 83%)
+`RYB Green`       | `#00a933` &emsp; (0, 169, 51)   | (138, 100%, 66%)
+`RYB Teal`        | `#158466` &emsp; (21, 132, 102) | (163, 84%, 52%)
+`RYB Blue`        | `#2a6099` &emsp; (42, 96, 153)  | (210, 73%, 60%)
+`RYB Violet`      | `#55308d` &emsp; (85, 48, 141)  | (264, 66%, 55%)
+`RYB Purple`      | `#800080` &emsp; (128, 0, 128)  | (300, 100%, 50%)
+`RYB Magenta`     | `#bf0041` &emsp; (191, 0, 65)   | (340, 100%, 75%)
 
 <br/>
 

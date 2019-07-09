@@ -1,0 +1,18 @@
+{
+	"console": {
+		"console-colorized-dark-red": true,
+		"console-colorized-dark-yellow": true,
+		"console-colorized-dark-green": true,
+		"console-colorized-dark-cyan": true,
+		"console-colorized-dark-blue": true,
+		"console-colorized-dark-magenta": true,
+		"console-colorized-light-orange": true,
+		"console-colorized-light-chartreuse": true,
+		"console-colorized-light-springgreen": true,
+		"console-colorized-light-azure": true,
+		"console-colorized-light-violet": true,
+		"console-colorized-light-rose": true,
+		"console-powershell-dark": true,
+		"console-powershell-light": true
+	}
+}
