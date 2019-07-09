@@ -64,7 +64,7 @@ You can find the master profile in the folder `~\Documents\WindowsPowerShell` in
 > :information_source:  
 > There are actually a number of profiles on your machine.  We are using the `CurrentUserAllHosts` profile here.  For more info, see https://docs.microsoft.com/en-gb/powershell/module/microsoft.powershell.core/about/about_profiles, but documentation doesn't always seem to line-up with what we see in a PowerShell console.
 
-If the folder or file are not there, you should create it.  You can pick-up our profile from the `scripts` folder in this project (`Documents-WindowsPowerShell-profile.ps1`) and rename it `profile.ps1`.  Remark that you may have to change the marked line at the end, pointing to the default-project profile.
+If the folder or file are not there, you should create it.  You can pick-up our profile from the `scripts` folder in this project (`@Documents-WindowsPowerShell_profile.ps1`) and rename it `profile.ps1`.  Remark that you may have to change the marked line at the end, pointing to the default-project profile.
 
 We want to run a different profile depending on the current directory.
 
@@ -124,7 +124,7 @@ Apply-PSConsoleSettings "PSCONSOLE"
 
 ### The default-project profile
 
-I like to put all my projects in a `~/Projects` folder so that is where I put my `.psprofile.ps1` file, but you can put it anywhere else and give it any name you want.  You can pick-up our profile from the `scripts` folder in this project (`Projects-.psprofile.ps1`), rename it and adapt it.
+I like to put all my projects in a `~/Projects` folder so that is where I put my `.psprofile.ps1` file, but you can put it anywhere else and give it any name you want.  You can pick-up our profile from the `scripts` folder in this project (`@Projects_.psprofile.ps1`), rename it and adapt it.
 
 - If you are using our master profile, update the marked line at the end of the master profile.
 
@@ -216,13 +216,13 @@ The color palette consists of 16 colors.  Default color-values are defined in a 
 - The colors of the color-table in the registry correspond to the colors in the `Defaults` and `Properties` from left to right.
 
 > :bulb:  
-> The PowerShell shortcut can usually be found in the Start Menu: `"$env:APPDATA/Microsoft/Windows/Start Menu/Programs/Windows PowerShell/Windows PowerShell.lnk"` (or with the `(x86)` suffix for the 32-bit version)
+> The PowerShell shortcut can usually be found in the Start Menu: `"$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk"` (or with the `(x86)` suffix for the 32-bit version).
 
 To illustrate the difference between the color palettes when starting Powershell in different ways, below, we started the console from the command prompt
 
 ![admin-console-via cmd.png](./docs/screenshots/admin-console-via-cmd.png)
 
-- One of the immediate differences you can observe is the much less saturated yellow color of the `[Administrator` indication in the prompt, compared to the higher screenshot.
+- One of the immediate differences you can observe is the much less saturated yellow color of the `[Administrator]` indication in the prompt, compared to the higher screenshot.
 
 And the corresponding color properties
 

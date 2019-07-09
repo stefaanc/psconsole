@@ -22,7 +22,7 @@ if ( -not $ROOT ) {
             $current = Split-Path -Path $current
         }
         if ( -not $current.StartsWith("$HOME") ) {
-            $current = null
+            $current = $null
         }
         return $current
     }
