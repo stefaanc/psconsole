@@ -1,16 +1,49 @@
+#
+# use:
+#
+#     Set-ShortcutColors "$Path" "$Theme"
+#
+# with f.i. 'console-powershell-legacy.json'
+#
+#     {
+#         "console": {
+#             "ScreenTextColor": 6,
+#             "ScreenBackgroundColor": 5,
+#             "PopupTextColor": 3,
+#             "PopupBackgroundColor": 15,
+#             "ConsoleColors": [
+#                 "#000000",
+#                 "#000080",
+#                 "#008000",
+#                 "#008080",
+#                 "#800000",
+#                 "#012456",
+#                 "#eeedf0",
+#                 "#c0c0c0",
+#                 "#808080",
+#                 "#0000ff",
+#                 "#00ff00",
+#                 "#00ffff",
+#                 "#ff0000",
+#                 "#ff00ff",
+#                 "#ffff00",
+#                 "#ffffff"
+#             ]
+#         }
+#     }
+#
 param(
-    [Parameter(Mandatory=$true)]
-    [ValidateScript({Test-Path $_})]
-    [string]$Path,
-
-    [Parameter()]
-    [ValidateScript({Test-Path $_})]
-    [string]$Theme
+    [Parameter(Mandatory=$true, Position=0)][string]$Path,
+    [Parameter(Mandatory=$true, Position=1)][string]$Theme
 )
 
 $ErrorActionPreference = 'Stop'
 
-$lnk = & .\Get-Shortcut.ps1 $Path
+if ( -not ( $Path -match "^.*(\.lnk)$" ) ) {
+    $Path = "$Path`.lnk"
+}
+
+$lnk = Get-Shortcut.ps1 $Path
 $colors = $( Get-Content -Raw -Path "$Theme" | ConvertFrom-Json )
 
 $lnk.ScreenTextColor = $colors.console.ScreenTextColor
@@ -36,5 +69,3 @@ $lnk.ConsoleColors[14] = $colors.console.ConsoleColors[14]
 $lnk.ConsoleColors[15] = $colors.console.ConsoleColors[15]
 
 $lnk.Save()
-
-Write-Output "Updated colors for $Path to $Theme"
