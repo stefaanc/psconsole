@@ -128,7 +128,7 @@ if ( $HOST.Name -ne 'ConsoleHost' ) {
 function ApplyPSConsoleSettings {
     # we are using a function to avoid variables polluting the environment when sourcing this
 
-    $e = [char]27
+    $e = [char]0x1b
 
     $VTForegroundColors = @{
         Black = "30"
@@ -168,6 +168,9 @@ function ApplyPSConsoleSettings {
         White = "107"
     }
 
+    $CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+    $IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+
     #
     # pickup the console settings and set console title
     $PSConsoleSettings = $( Get-Content -Raw -Path "$ROOT/.psconsole.json" | ConvertFrom-Json )
@@ -175,14 +178,11 @@ function ApplyPSConsoleSettings {
     if ( ( $HOST.UI.RawUI.ForegroundColor -eq 'DarkYellow' ) -and ( $HOST.UI.RawUI.BackgroundColor -eq 'DarkMagenta' ) ) {
         # we are working with a legacy Powershell instance
 
-        $CS = $PSConsoleSettingsLegacyColorScheme
+        $CS = $PSConsoleSettings.LegacyColorScheme
     }
     else {
         # we are working with a modified Powershell instance
         # we assume a "Colorized" color-scheme is being used for the console
-
-        $CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
-        $IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
         if ( $IsAdmin ) {
             $CS = $PSConsoleSettings.AdminColorScheme
@@ -235,92 +235,92 @@ function ApplyPSConsoleSettings {
             #
             # prepare VT code for syntax colors
             $VTCommand = "$e[$( $VTForegroundColors.$( $CS.SyntaxCommandForegroundColor ) )"
-            if ( $CS.SyntaxCommandBackgroundColor -ne $StreamOutputBackgroundColor ) {
-                $VTCommand = $VTCommand + ";$( $VTForegroundColors.$( $CS.SyntaxCommandBackgroundColor ) )"
+            if ( $CS.SyntaxCommandBackgroundColor -ne $CS.StreamOutputBackgroundColor ) {
+                $VTCommand = $VTCommand + ";$( $VTBackgroundColors.$( $CS.SyntaxCommandBackgroundColor ) )"
             }
             $VTCommand = $VTCommand + "m"
 
-            $VTComment = "$e[$( $VTForegroundColors.$( $CS.SyntaxCommentForegroundColor ) )" 
-            if ( $CS.SyntaxCommentBackgroundColor -ne $StreamOutputBackgroundColor ) {
-                $VTComment = $VTComment + ";$( $VTForegroundColors.$( $CS.SyntaxCommentBackgroundColor ) )"
+            $VTComment = "$e[$( $VTForegroundColors.$( $CS.SyntaxCommentForegroundColor ) )"
+            if ( $CS.SyntaxCommentBackgroundColor -ne $CS.StreamOutputBackgroundColor ) {
+                $VTComment = $VTComment + ";$( $VTBackgroundColors.$( $CS.SyntaxCommentBackgroundColor ) )"
             }
             $VTComment = $VTComment + "m"
 
-            $VTContinuationPrompt = "$e[$( $VTForegroundColors.$( $CS.SyntaxContinuationPromptForegroundColor ) )" 
-            if ( $CS.SyntaxContinuationPromptBackgroundColor -ne $StreamOutputBackgroundColor ) {
-                $VTContinuationPrompt = $VTContinuationPrompt + ";$( $VTForegroundColors.$( $CS.SyntaxContinuationPromptBackgroundColor ) )"
+            $VTContinuationPrompt = "$e[$( $VTForegroundColors.$( $CS.SyntaxContinuationPromptForegroundColor ) )"
+            if ( $CS.SyntaxContinuationPromptBackgroundColor -ne $CS.StreamOutputBackgroundColor ) {
+                $VTContinuationPrompt = $VTContinuationPrompt + ";$( $VTBackgroundColors.$( $CS.SyntaxContinuationPromptBackgroundColor ) )"
             }
             $VTContinuationPrompt = $VTContinuationPrompt + "m"
 
-            $VTDefault = "$e[$( $VTForegroundColors.$( $CS.SyntaxDefaultForegroundColor ) )" 
-            if ( $CS.SyntaxDefaultBackgroundColor -ne $StreamOutputBackgroundColor ) {
-                $VTDefault = $VTDefault + ";$( $VTForegroundColors.$( $CS.SyntaxDefaultBackgroundColor ) )"
+            $VTDefault = "$e[$( $VTForegroundColors.$( $CS.SyntaxDefaultForegroundColor ) )"
+            if ( $CS.SyntaxDefaultBackgroundColor -ne $CS.StreamOutputBackgroundColor ) {
+                $VTDefault = $VTDefault + ";$( $VTBackgroundColors.$( $CS.SyntaxDefaultBackgroundColor ) )"
             }
             $VTDefault = $VTDefault + "m"
 
-            $VTEmphasis = "$e[$( $VTForegroundColors.$( $CS.SyntaxEmphasisForegroundColor ) )" 
-            if ( $CS.SyntaxEmphasisBackgroundColor -ne $StreamOutputBackgroundColor ) {
-                $VTEmphasis = $VTEmphasis + ";$( $VTForegroundColors.$( $CS.SyntaxEmphasisBackgroundColor ) )"
+            $VTEmphasis = "$e[$( $VTForegroundColors.$( $CS.SyntaxEmphasisForegroundColor ) )"
+            if ( $CS.SyntaxEmphasisBackgroundColor -ne $CS.StreamOutputBackgroundColor ) {
+                $VTEmphasis = $VTEmphasis + ";$( $VTBackgroundColors.$( $CS.SyntaxEmphasisBackgroundColor ) )"
             }
             $VTEmphasis = $VTEmphasis + "m"
 
-            $VTError = "$e[$( $VTForegroundColors.$( $CS.SyntaxErrorForegroundColor ) )" 
-            if ( $CS.SyntaxErrorBackgroundColor -ne $StreamOutputBackgroundColor ) {
-                $VTError = $VTError + ";$( $VTForegroundColors.$( $CS.SyntaxErrorBackgroundColor ) )"
+            $VTError = "$e[$( $VTForegroundColors.$( $CS.SyntaxErrorForegroundColor ) )"
+            if ( $CS.SyntaxErrorBackgroundColor -ne $CS.StreamOutputBackgroundColor ) {
+                $VTError = $VTError + ";$( $VTBackgroundColors.$( $CS.SyntaxErrorBackgroundColor ) )"
             }
             $VTError = $VTError + "m"
 
-            $VTKeyword = "$e[$( $VTForegroundColors.$( $CS.SyntaxKeywordForegroundColor ) )" 
-            if ( $CS.SyntaxKeywordBackgroundColor -ne $StreamOutputBackgroundColor ) {
-                $VTKeyword = $VTKeyword + ";$( $VTForegroundColors.$( $CS.SyntaxKeywordBackgroundColor ) )"
+            $VTKeyword = "$e[$( $VTForegroundColors.$( $CS.SyntaxKeywordForegroundColor ) )"
+            if ( $CS.SyntaxKeywordBackgroundColor -ne $CS.StreamOutputBackgroundColor ) {
+                $VTKeyword = $VTKeyword + ";$( $VTBackgroundColors.$( $CS.SyntaxKeywordBackgroundColor ) )"
             }
             $VTKeyword = $VTKeyword + "m"
 
-            $VTMember = "$e[$( $VTForegroundColors.$( $CS.SyntaxMemberForegroundColor ) )" 
-            if ( $CS.SyntaxMemberBackgroundColor -ne $StreamOutputBackgroundColor ) {
-                $VTMember = $VTMember + ";$( $VTForegroundColors.$( $CS.SyntaxMemberBackgroundColor ) )"
+            $VTMember = "$e[$( $VTForegroundColors.$( $CS.SyntaxMemberForegroundColor ) )"
+            if ( $CS.SyntaxMemberBackgroundColor -ne $CS.StreamOutputBackgroundColor ) {
+                $VTMember = $VTMember + ";$( $VTBackgroundColors.$( $CS.SyntaxMemberBackgroundColor ) )"
             }
             $VTMember = $VTMember + "m"
 
-            $VTNumber = "$e[$( $VTForegroundColors.$( $CS.SyntaxNumberForegroundColor ) )" 
-            if ( $CS.SyntaxNumberBackgroundColor -ne $StreamOutputBackgroundColor ) {
-                $VTNumber = $VTNumber + ";$( $VTForegroundColors.$( $CS.SyntaxNumberBackgroundColor ) )"
+            $VTNumber = "$e[$( $VTForegroundColors.$( $CS.SyntaxNumberForegroundColor ) )"
+            if ( $CS.SyntaxNumberBackgroundColor -ne $CS.StreamOutputBackgroundColor ) {
+                $VTNumber = $VTNumber + ";$( $VTBackgroundColors.$( $CS.SyntaxNumberBackgroundColor ) )"
             }
             $VTNumber = $VTNumber + "m"
 
-            $VTOperator = "$e[$( $VTForegroundColors.$( $CS.SyntaxOperatorForegroundColor ) )" 
-            if ( $CS.SyntaxOperatorBackgroundColor -ne $StreamOutputBackgroundColor ) {
-                $VTOperator = $VTOperator + ";$( $VTForegroundColors.$( $CS.SyntaxOperatorBackgroundColor ) )"
+            $VTOperator = "$e[$( $VTForegroundColors.$( $CS.SyntaxOperatorForegroundColor ) )"
+            if ( $CS.SyntaxOperatorBackgroundColor -ne $CS.StreamOutputBackgroundColor ) {
+                $VTOperator = $VTOperator + ";$( $VTBackgroundColors.$( $CS.SyntaxOperatorBackgroundColor ) )"
             }
             $VTOperator = $VTOperator + "m"
 
-            $VTParameter = "$e[$( $VTForegroundColors.$( $CS.SyntaxParameterForegroundColor ) )" 
-            if ( $CS.SyntaxParameterBackgroundColor -ne $StreamOutputBackgroundColor ) {
-                $VTParameter = $VTParameter + ";$( $VTForegroundColors.$( $CS.SyntaxParameterBackgroundColor ) )"
+            $VTParameter = "$e[$( $VTForegroundColors.$( $CS.SyntaxParameterForegroundColor ) )"
+            if ( $CS.SyntaxParameterBackgroundColor -ne $CS.StreamOutputBackgroundColor ) {
+                $VTParameter = $VTParameter + ";$( $VTBackgroundColors.$( $CS.SyntaxParameterBackgroundColor ) )"
             }
             $VTParameter = $VTParameter + "m"
 
-            $VTSelection = "$e[$( $VTForegroundColors.$( $CS.SyntaxSelectionForegroundColor ) )" 
-            if ( $CS.SyntaxSelectionBackgroundColor -ne $StreamOutputBackgroundColor ) {
-                $VTSelection = $VTSelection + ";$( $VTForegroundColors.$( $CS.SyntaxSelectionBackgroundColor ) )"
+            $VTSelection = "$e[$( $VTForegroundColors.$( $CS.SyntaxSelectionForegroundColor ) )"
+            if ( $CS.SyntaxSelectionBackgroundColor -ne $CS.StreamOutputBackgroundColor ) {
+                $VTSelection = $VTSelection + ";$( $VTBackgroundColors.$( $CS.SyntaxSelectionBackgroundColor ) )"
             }
             $VTSelection = $VTSelection + "m"
 
-            $VTString = "$e[$( $VTForegroundColors.$( $CS.SyntaxStringForegroundColor ) )" 
-            if ( $CS.SyntaxStringBackgroundColor -ne $StreamOutputBackgroundColor ) {
-                $VTString = $VTString + ";$( $VTForegroundColors.$( $CS.SyntaxStringBackgroundColor ) )"
+            $VTString = "$e[$( $VTForegroundColors.$( $CS.SyntaxStringForegroundColor ) )"
+            if ( $CS.SyntaxStringBackgroundColor -ne $CS.StreamOutputBackgroundColor ) {
+                $VTString = $VTString + ";$( $VTBackgroundColors.$( $CS.SyntaxStringBackgroundColor ) )"
             }
             $VTString = $VTString + "m"
 
-            $VTType = "$e[$( $VTForegroundColors.$( $CS.SyntaxTypeForegroundColor ) )" 
-            if ( $CS.SyntaxTypeBackgroundColor -ne $StreamOutputBackgroundColor ) {
-                $VTType = $VTType + ";$( $VTForegroundColors.$( $CS.SyntaxTypeBackgroundColor ) )"
+            $VTType = "$e[$( $VTForegroundColors.$( $CS.SyntaxTypeForegroundColor ) )"
+            if ( $CS.SyntaxTypeBackgroundColor -ne $CS.StreamOutputBackgroundColor ) {
+                $VTType = $VTType + ";$( $VTBackgroundColors.$( $CS.SyntaxTypeBackgroundColor ) )"
             }
             $VTType = $VTType + "m"
 
-            $VTVariable = "$e[$( $VTForegroundColors.$( $CS.SyntaxVariableForegroundColor ) )" 
-            if ( $CS.SyntaxVariableBackgroundColor -ne $StreamOutputBackgroundColor ) {
-                $VTVariable = $VTVariable + ";$( $VTForegroundColors.$( $CS.SyntaxVariableBackgroundColor ) )"
+            $VTVariable = "$e[$( $VTForegroundColors.$( $CS.SyntaxVariableForegroundColor ) )"
+            if ( $CS.SyntaxVariableBackgroundColor -ne $CS.StreamOutputBackgroundColor ) {
+                $VTVariable = $VTVariable + ";$( $VTBackgroundColors.$( $CS.SyntaxVariableBackgroundColor ) )"
             }
             $VTVariable = $VTVariable + "m"
 
@@ -331,17 +331,17 @@ function ApplyPSConsoleSettings {
                     Command = $VTCommand
                     Comment = $VTComment
                     ContinuationPrompt = $VTContinuationPrompt
-                    Default = $VTDefault 
-                    Emphasis = $VTEmphasis 
-                    Error = $VTError 
-                    Keyword = $VTKeyword 
-                    Member = $VTMember 
-                    Number = $VTNumber 
+                    Default = $VTDefault
+                    Emphasis = $VTEmphasis
+                    Error = $VTError
+                    Keyword = $VTKeyword
+                    Member = $VTMember
+                    Number = $VTNumber
                     Operator = $VTOperator
-                    Parameter = $VTParameter 
-                    Selection = $VTSelection 
-                    String = $VTString 
-                    Type = $VTType 
+                    Parameter = $VTParameter
+                    Selection = $VTSelection
+                    String = $VTString
+                    Type = $VTType
                     Variable = $VTVariable
                 }
             }
@@ -376,7 +376,8 @@ ApplyPSConsoleSettings
 if ( -not $NoPrompt ) {
     function global:Prompt {
         if ( "$PROMPT_ADMIN_FOREGROUNDCOLOR" -ne "" ) {
-            Write-Host "[Administrator] " -NoNewline -ForegroundColor $PROMPT_ADMIN_FOREGROUNDCOLOR -BackgroundColor $PROMPT_ADMIN_BACKGROUNDCOLOR
+            Write-Host "[Administrator]" -NoNewline -ForegroundColor $PROMPT_ADMIN_FOREGROUNDCOLOR -BackgroundColor $PROMPT_ADMIN_BACKGROUNDCOLOR
+            Write-Host " " -NoNewline
         }
         Write-Host "PS $( Get-Location )>" -NoNewline -ForegroundColor $PROMPT_FOREGROUNDCOLOR -BackgroundColor $PROMPT_BACKGROUNDCOLOR
 

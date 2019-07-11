@@ -128,7 +128,7 @@
         "SyntaxParameterBackgroundColor": "DarkMagenta",
         "SyntaxSelectionForegroundColor": "DarkMagenta",
         "SyntaxSelectionBackgroundColor": "DarkYellow",
-        "SyntaxStringForegroundColor": "DarkBlue",
+        "SyntaxStringForegroundColor": "DarkCyan",
         "SyntaxStringBackgroundColor": "DarkMagenta",
         "SyntaxTypeForegroundColor": "Gray",
         "SyntaxTypeBackgroundColor": "DarkMagenta",
