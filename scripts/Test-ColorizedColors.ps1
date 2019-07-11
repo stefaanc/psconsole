@@ -1,3 +1,10 @@
+#
+# Copyright (c) 2019 Stefaan Coussement
+# MIT License
+#
+# more info: https://github.com/stefaanc/psconsole
+#
+
 $ErrorActionPreference = 'Stop'
 
 if ( -not ( Test-Path -Path "$ROOT/playground") ) {
