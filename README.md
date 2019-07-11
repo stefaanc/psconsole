@@ -197,12 +197,17 @@ When running PowerShell as an administrator, an indication of this is added to t
 
 ![admin-console.png](./docs/screenshots/admin-console.png)
 
+If you don't like what we did with the prompt, you can disable the changes to the prompt
+
+```powershell
+Apply-PSConsoleSettings "PSCONSOLE" -NoPrompt
+```
 
 ### The color palette
 
 To understand the sometimes "unexpected" results when changing colors, we need a bit more explanation to understand some of the basics of color palettes.
 
-The color palette consists of 16 colors.  Default color-values are defined in a color-table in the registry (`ColorTable00` .. `ColorTable15`).  This can be overridden in the properties of a shortcut to PowerShell (`.lnk` file), hence colors can be different depending on how you start the console.
+The color palette consists of 16 colors.  Default color-values are defined in a color-table in the registry (`ColorTable00` .. `ColorTable15`).  This can be overridden in the properties of a shortcut to PowerShell  application (`.lnk` file), hence colors can be different depending on how you start the console.
 
 ![console-menu.png](./docs/screenshots/console-menu.png)
 
@@ -228,7 +233,7 @@ And the corresponding color properties
 
 ![console-properties-colors-via-cmd.png](./docs/screenshots/console-properties-colors-via-cmd.png)
 
-- When we started PowerShell from the Command Prompt, we started the `.exe` application, not the `.lnk` shortcut on the Start Menu.  This is using the properties color-table for `powershell.exe` from the registry instead of the properties of the shortcut.  
+- When we started PowerShell from the Run app, we started the `.exe` application, not the `.lnk` shortcut on the Start Menu.  This is using the default color-table for `powershell.exe` from the registry instead of the properties of a shortcut.  
 
 > :information_source:  
 > The colors or your PowerShell.exe console may be different than what's shown here.  This is because the default console colors were recently changed to a dimmer version ( https://devblogs.microsoft.com/commandline/updating-the-windows-console-colors/ ), so your installation may still be using the legacy colors in the registry color-tables.
@@ -264,6 +269,106 @@ ColorTable | Foreground ANSI/VT100 | Background ANSI/VT100 | PowerShell Name | L
 
 ### The colors of the console
 
+> :warning:
+> From Windows 10 build 1809 onward, the `PSReadline` module was upgraded from version 1.2 to a 2.0.0-beta version.  **This beta version causes a lot of issues.**  To make the following work, you **must** to downgrade `PSReadLine` to version 1.2
+> 
+> - check if you have version 2.0.0
+>
+>   ```powershell
+>   Get-Module PSReadLine
+>   ```
+>
+>   gives
+>
+>   ```text
+>   ModuleType Version    Name           ExportedCommands
+>   ---------- -------    ----           ----------------
+>   Script     2.0.0      PSReadLine     {Get-PSReadlineKeyHandler, Get-PSReadlineOption, Remove-PS...
+>   ```
+>
+> - run PowerShell as administrator, and execute
+>
+>   ```powershell
+>   Install-Module -Name PSReadLine -RequireVersion 1.2 -SkipPublisherCheck
+>   ```
+>  
+> - delete `C:\Program Files\WindowsPowerShell\Modules\PSReadline\2.0.0`
+> - check
+>
+>   ```powershell
+>   Get-InstalledModule PSReadLine
+>   ```
+>
+>   gives
+> 
+>   ```text
+>   Version           Name           Repository           Description
+>   -------           ----           ----------           -----------
+>   1.2               PSReadLine     PSGallery            Great command line editing in the Powe...
+>   ```
+
+As explained in the [previous section](#the-color-palette), the colors of the console are defined in the registry and in the properties of a shortcut to the PowerShell application.  We don't really want to change the registry because that changes colors for every instance of the application, so we are going to focus on creating shortcuts, and change the colors of these shortcuts.
+
+- `New-Shortcut` creates a new shortcut.
+
+  ```powershell
+  New-Shortcut "$ROOT/scripts/my-powershell.lnk" -TargetPath "$env:SystemRoot\system32\WindowsPowerShell\v1.0\powershell.exe"
+  ```
+  - remark the name of the shortcut should be the **full** path to the shortcut, an the extension `.lnk` is optional.
+  - have a look at the top of the script in the `scripts` folder for more parameters, f.i. `-Arguments` and `-WorkingDirectory`
+
+- `Get-Shortcut` is used by the other scripts.  It gets an object to modify the properties of a shortcut.
+
+- `Set-SortcutColors`
+
+  ```powershell
+  Set-ShortcutColors "$ROOT/playground/my-powershell.lnk" -Theme "$ROOT/colors/console-powershell-legacy.json"
+  ```
+
+  themes are a json file, f.i. the `console-powershell-legacy.json` theme
+
+  ```javascript
+  {
+      "console": {
+          "ScreenTextColor": 6,
+          "ScreenBackgroundColor": 5,
+          "PopupTextColor": 3,
+          "PopupBackgroundColor": 15,
+          "ConsoleColors": [
+              "#000000",
+              "#000080",
+              "#008000",
+              "#008080",
+              "#800000",
+              "#012456",
+              "#eeedf0",
+              "#c0c0c0",
+              "#808080",
+              "#0000ff",
+              "#00ff00",
+              "#00ffff",
+              "#ff0000",
+              "#ff00ff",
+              "#ffff00",
+              "#ffffff"
+          ]
+      }
+  }
+  ```
+
+  - We developed a number of color-schemes based on the very popular `Solarized` theme, but with a couple of modifications, and added more choices in background colors.  You can read more on the `Colorized` themes [here](/docs/color-schemes.md)
+  - We also added a couple based on the traditional Powershell background color.
+
+
+- `Set-ShortcutWindowSize` sets the size of the windows and screen-buffer
+
+  ```powershell
+  Set-ShortcutWindowSize "$ROOT/scripts/my-powershell.lnk" -Width 120 -Height 50 -ScreenBufferHeight 5000
+  ```
+
+- `Write-ColorizedColors` shows the colors of the color-scheme of the current shell.
+
+- `Test-ColorizedColors` creates a folder `$ROOT/playground`, and in that folder a powershell-shortcut for every color-scheme.
 
 ### The colors of the output to streams
 
@@ -279,3 +384,4 @@ ColorTable | Foreground ANSI/VT100 | Background ANSI/VT100 | PowerShell Name | L
 ## For Further Investigation
 
 - Support for early versions of PowerShell v5.x using PSReadLine v1.x
+- Monitor evolution of the `PSReadLine` version 2.0.0 module

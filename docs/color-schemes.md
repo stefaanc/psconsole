@@ -18,6 +18,14 @@ We based our main color-scheme  on the very successful "Solarized" theme (https:
 
 - we added a number of alternative background colors - both in the dark and the light variant.  We rotated the `Hue` 30 degrees for each, and used same `Saturation` and lightness `Value`.
 
+![colorized-dark.png](./screenshots/colorized-dark.png)
+
+![colorized-dark.png](./screenshots/colorized-light.png)
+
+- we also added a couple of variations based on the powershell colors
+
+![colorized-dark.png](./screenshots/powershell.png)
+
 <br/>
 
 ### Background Colors
