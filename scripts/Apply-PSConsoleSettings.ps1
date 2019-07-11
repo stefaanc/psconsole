@@ -231,10 +231,11 @@ function ApplyPSConsoleSettings {
         if ( [System.Version](Get-Module PSReadline).Version -lt [System.Version]"2.0.0" ) {
             Set-PSReadLineOption -TokenKind 'Command' -ForegroundColor $CS.SyntaxCommandForegroundColor -BackgroundColor $CS.SyntaxCommandBackgroundColor
             Set-PSReadLineOption -TokenKind 'Comment' -ForegroundColor $CS.SyntaxCommentForegroundColor -BackgroundColor $CS.SyntaxCommentBackgroundColor
-            Set-PSReadLineOption -TokenKind 'ContinuationPrompt' -ForegroundColor $CS.SyntaxContinuationPromptForegroundColor -BackgroundColor $CS.SyntaxContinuationPromptBackgroundColor
-            Set-PSReadLineOption -TokenKind 'DefaultToken' -ForegroundColor $CS.SyntaxDefaultForegroundColor -BackgroundColor $CS.SyntaxDefaultBackgroundColor
-            Set-PSReadLineOption -TokenKind 'Emphasis' -ForegroundColor $CS.SyntaxEmphasisForegroundColor -BackgroundColor $CS.SyntaxEmphasisBackgroundColor
-            Set-PSReadLineOption -TokenKind 'Error' -ForegroundColor $CS.SyntaxErrorForegroundColor -BackgroundColor $CS.SyntaxErrorBackgroundColor
+            # Set-PSReadLineOption -TokenKind 'ContinuationPrompt' -ForegroundColor $CS.SyntaxContinuationPromptForegroundColor -BackgroundColor $CS.SyntaxContinuationPromptBackgroundColor
+            # Set-PSReadLineOption -TokenKind 'DefaultToken' -ForegroundColor $CS.SyntaxDefaultForegroundColor -BackgroundColor $CS.SyntaxDefaultBackgroundColor
+            Set-PSReadLineOption -TokenKind 'None' -ForegroundColor $CS.SyntaxDefaultForegroundColor -BackgroundColor $CS.SyntaxDefaultBackgroundColor
+            # Set-PSReadLineOption -TokenKind 'Emphasis' -ForegroundColor $CS.SyntaxEmphasisForegroundColor -BackgroundColor $CS.SyntaxEmphasisBackgroundColor
+            # Set-PSReadLineOption -TokenKind 'Error' -ForegroundColor $CS.SyntaxErrorForegroundColor -BackgroundColor $CS.SyntaxErrorBackgroundColor
             Set-PSReadLineOption -TokenKind 'Keyword' -ForegroundColor $CS.SyntaxKeywordForegroundColor -BackgroundColor $CS.SyntaxKeywordBackgroundColor
             Set-PSReadLineOption -TokenKind 'Member' -ForegroundColor $CS.SyntaxMemberForegroundColor -BackgroundColor $CS.SyntaxMemberBackgroundColor
             Set-PSReadLineOption -TokenKind 'Number' -ForegroundColor $CS.SyntaxNumberForegroundColor -BackgroundColor $CS.SyntaxNumberBackgroundColor

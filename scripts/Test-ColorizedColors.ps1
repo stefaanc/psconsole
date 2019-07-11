@@ -4,8 +4,7 @@ if ( -not ( Test-Path -Path "$ROOT/playground") ) {
     New-Item -ItemType 'directory' "$ROOT/playground"
 }
 
-#$command = "function global:Prompt { Write-Host -NoNewline `'PS >`'; return `' `' }; $ROOT/scripts/Write-ColorizedColors;"
-$command = "$ROOT/scripts/Write-ColorizedColors;"
+$command = "function global:Prompt { Write-Host -NoNewline `'PS >`'; return `' `' }; $ROOT/scripts/Write-ColorizedColors;"
 
 New-Shortcut "$ROOT/playground/colorized-light-springgreen" -TargetPath "$env:SystemRoot\system32\WindowsPowerShell\v1.0\powershell.exe" -Arguments "-NoProfile -NoExit `"$command`""
 Set-ShortcutColors "$ROOT/playground/colorized-light-springgreen" -Theme "$ROOT/colors/console-colorized-light-springgreen.json"
