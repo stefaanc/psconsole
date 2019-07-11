@@ -359,6 +359,8 @@ As explained in the [previous section](#the-color-palette), the colors of the co
   - We developed a number of color-schemes based on the very popular `Solarized` theme, but with a couple of modifications, and added more choices in background colors.  You can read more on the `Colorized` themes [here](/docs/color-schemes.md)
   - We also added a couple based on the traditional Powershell background color.
 
+    > :bulb:
+    > Remark that you need to run `Apply-PSConsoleSettings` in your profile to make sure that the above palettte colors are correctly mapped on the colors for Powershell elements (stream output, syntax tokens and prompt).
 
 - `Set-ShortcutWindowSize` sets the size of the windows and screen-buffer
 
@@ -370,18 +372,113 @@ As explained in the [previous section](#the-color-palette), the colors of the co
 
 - `Test-ColorizedColors` creates a folder `$ROOT/playground`, and in that folder a powershell-shortcut for every color-scheme.
 
+
 ### The colors of the output to streams
+
+The `Apply-PSConsoleSettings` is used to map palette colors on the colors of the output to the different PowerShell streams.  The mapping is defined in the `.psconsole.json` file.  This file **MUST** have three sections:
+
+```javascript
+{
+    "UserColorScheme": {
+        // ... mapping of 'Colorized' color-schemes on PowerShell elements in a normal user console
+    },
+    "AdminColorScheme": {
+        // ... mapping of 'Colorized' color-schemes on PowerShell elements in an administrator console
+    },
+    "LegacyColorScheme": {
+        // ... mapping of 'powershell-legacy' and '-campbell' color-schemes on PowerShell elements in any console
+    }
+}```
+
+The mapping of foreground and background colors for streams is defined by properties `"Stream*"`, for instance for the `"LegacyColorScheme"`
+
+```javascript
+        "StreamOutputForegroundColor": "DarkYellow",
+        "StreamOutputBackgroundColor": "DarkMagenta",
+
+        "StreamErrorForegroundColor": "Red",
+        "StreamErrorBackgroundColor": "Black",
+
+        "StreamWarningForegroundColor": "Yellow",
+        "StreamWarningBackgroundColor": "Black",
+
+        "StreamDebugForegroundColor": "Yellow",
+        "StreamDebugBackgroundColor": "Black",
+
+        "StreamVerboseForegroundColor": "Yellow",
+        "StreamVerboseBackgroundColor": "Black",
+
+        "StreamProgressForegroundColor": "Yellow",
+        "StreamProgressBackgroundColor": "DarkCyan",
+```
 
 
 ### The colors of the syntax-highlighting
 
+The mapping of foreground and background colors for syntax-highlighting is defined by properties `"Syntax*"`, for instance for the `"LegacyColorScheme"`
+
+```javascript
+        "SyntaxCommandForegroundColor": "Yellow",
+        "SyntaxCommandBackgroundColor": "DarkMagenta",
+
+        "SyntaxCommentForegroundColor": "DarkGreen",
+        "SyntaxCommentBackgroundColor": "DarkMagenta",
+
+        "SyntaxContinuationPromptForegroundColor": "DarkYellow",
+        "SyntaxContinuationPromptBackgroundColor": "DarkMagenta",
+
+        "SyntaxDefaultForegroundColor": "DarkYellow",
+        "SyntaxDefaultBackgroundColor": "DarkMagenta",
+
+        "SyntaxEmphasisForegroundColor": "Cyan",
+        "SyntaxEmphasisBackgroundColor": "DarkMagenta",
+
+        "SyntaxErrorForegroundColor": "Red",
+        "SyntaxErrorBackgroundColor": "DarkMagenta",
+
+        "SyntaxKeywordForegroundColor": "Green",
+        "SyntaxKeywordBackgroundColor": "DarkMagenta",
+
+        "SyntaxMemberForegroundColor": "White",
+        "SyntaxMemberBackgroundColor": "DarkMagenta",
+
+        "SyntaxNumberForegroundColor": "White",
+        "SyntaxNumberBackgroundColor": "DarkMagenta",
+
+        "SyntaxOperatorForegroundColor": "DarkGray",
+        "SyntaxOperatorBackgroundColor": "DarkMagenta",
+
+        "SyntaxParameterForegroundColor": "DarkGray",
+        "SyntaxParameterBackgroundColor": "DarkMagenta",
+
+        "SyntaxSelectionForegroundColor": "DarkMagenta",
+        "SyntaxSelectionBackgroundColor": "DarkYellow",
+
+        "SyntaxStringForegroundColor": "DarkCyan",
+        "SyntaxStringBackgroundColor": "DarkMagenta",
+
+        "SyntaxTypeForegroundColor": "Gray",
+        "SyntaxTypeBackgroundColor": "DarkMagenta",
+
+        "SyntaxVariableForegroundColor": "Green",
+        "SyntaxVariableBackgroundColor": "DarkMagenta",
+```
+
 
 ### The colors of the prompt
+
+The mapping of foreground and background colors for the prompt is defined by properties `"Prompt*"`, for instance for the `"LegacyColorScheme"`
+
+```javascript
+        "PromptForegroundColor": "DarkYellow",
+        "PromptBackgroundColor": "DarkMagenta"
+```
 
 
 <br/>
 
 ## For Further Investigation
 
-- Support for early versions of PowerShell v5.x using PSReadLine v1.x
+- Temper the traffic light colors for use on light backgrounds
 - Monitor evolution of the `PSReadLine` version 2.0.0 module
+- Add script to set the console font and font-size
