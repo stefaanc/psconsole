@@ -134,7 +134,7 @@
         "SyntaxTypeBackgroundColor": "DarkMagenta",
         "SyntaxVariableForegroundColor": "Green",
         "SyntaxVariableBackgroundColor": "DarkMagenta",
-        "PromptForegroundColor": "DarkGray",
+        "PromptForegroundColor": "DarkYellow",
         "PromptBackgroundColor": "DarkMagenta"
     }
 }
