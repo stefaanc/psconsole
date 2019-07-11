@@ -41,16 +41,13 @@ if ( -not $ROOT ) {
 # find the default-project profile
 if ( -not $ROOT ) {
     ~\Projects\.psprofile.ps1   # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< you may have to change this
-    exit 0
 }
 
 #
 # run default-master profile
 if ( -not $ROOT ) {
     $global:ROOT = $HOME
-    $global:PATH = "$ROOT\Documents\WindowsPowerShell\scripts;$env:PATH"
-
-    $env:PATH = $global:PATH
+    $env:PATH = "$ROOT\Documents\WindowsPowerShell\scripts;$env:PATH"
 
     if ( -not ( Get-Location ).Path.StartsWith("$ROOT") ) {
         Set-Location "$ROOT"

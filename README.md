@@ -26,6 +26,8 @@ An overview of the profile structure
 
 ```text
 HOME
+  |-- .psconsole.json
+  |
   |-- Documents
   |     |-- WindowsPowerShell
   |           |-- profile.ps1             # <<<<<<<<<< master profile
@@ -37,12 +39,14 @@ HOME
         |-- .psprofile.ps1                # <<<<<<<<<< default-project profile
         |
         |-- project-1
+        |     |-- .psconsole.json
         |     |-- .psprofile.ps1          # <<<<<<<<<< project profile
         |     |
         |     |-- scripts
         |           |-- Apply-PSConsoleSettings.ps1
         |
         |-- project-2
+        |     |-- .psconsole.json
         |     |-- .psprofile.ps1          # <<<<<<<<<< project profile
         |     |
         |     |-- scripts
@@ -51,6 +55,7 @@ HOME
         .
         .
         |-- project-N
+        |     |-- .psconsole.json
               |-- .psprofile.ps1          # <<<<<<<<<< project profile
               |
               |-- scripts
@@ -181,6 +186,10 @@ To control all of this, we use a script `Apply-PSConsoleSettings.ps1` in combina
 
 ### The window title and prompt
 
+> :warning:
+> In this and following sections, we will use the `Apply-PSConsoleSettings` script to set window titles and change colors.
+For this to work, you **MUST** copy the `@HOME_.psconsole.json` file to your home directory and rename it to `.psconsole.json`, **AND** do the same for any project folders where you want to use this script in your project-profile.
+
 To add the project name to the window title - for instance "PSCONSOLE"
 
 ```powershell
@@ -270,7 +279,7 @@ ColorTable | Foreground ANSI/VT100 | Background ANSI/VT100 | PowerShell Name | L
 ### The colors of the console
 
 > :warning:
-> From Windows 10 build 1809 onward, the `PSReadline` module was upgraded from version 1.2 to a 2.0.0-beta version.  **This beta version causes a lot of issues.**  To make the following work, you **must** to downgrade `PSReadLine` to version 1.2
+> From Windows 10 build 1809 onward, the `PSReadline` module was upgraded from version 1.2 to a 2.0.0-beta version.  This beta version causes a lot of issues that cannot be worked around.  To make the following work, you **MUST** downgrade the `PSReadLine` module to version 1.2
 > 
 > - check if you have version 2.0.0
 >
@@ -360,7 +369,7 @@ As explained in the [previous section](#the-color-palette), the colors of the co
   - We also added a couple based on the traditional Powershell background color.
 
     > :bulb:
-    > Remark that you need to run `Apply-PSConsoleSettings` in your profile to make sure that the above palettte colors are correctly mapped on the colors for Powershell elements (stream output, syntax tokens and prompt).
+    > Remark that you need to run `Apply-PSConsoleSettings` in your profile with a `.psconsole.json` file, to make sure that the above palettte colors are correctly mapped on the colors for Powershell elements (stream output, syntax tokens and prompt).
 
 - `Set-ShortcutWindowSize` sets the size of the windows and screen-buffer
 
@@ -375,7 +384,11 @@ As explained in the [previous section](#the-color-palette), the colors of the co
 
 ### The colors of the output to streams
 
-The `Apply-PSConsoleSettings` is used to map palette colors on the colors of the output to the different PowerShell streams.  The mapping is defined in the `.psconsole.json` file.  This file **MUST** have three sections:
+> :warning:
+> In the this and following sections, we will use the `Apply-PSConsoleSettings` script to set window titles and change colors.
+For this to work, you **MUST** copy the `@HOME_.psconsole.json` file to your home directory and rename it to `.psconsole.json`, **AND** do the same for any project folders where you want to use this script in your project-profile.
+
+The `Apply-PSConsoleSettings` is used to map palette colors on the colors of the output to the different PowerShell streams.  The mapping is defined in the `.psconsole.json` file in the `$ROOT` folder.  This file **MUST** have three sections:
 
 ```javascript
 {
@@ -479,6 +492,6 @@ The mapping of foreground and background colors for the prompt is defined by pro
 
 ## For Further Investigation
 
-- Temper the traffic light colors for use on light backgrounds
+- Temper the traffic light colors (esp. `Traffic Green`) for use on light backgrounds, but keep it "popping"
 - Monitor evolution of the `PSReadLine` version 2.0.0 module
 - Add script to set the console font and font-size
