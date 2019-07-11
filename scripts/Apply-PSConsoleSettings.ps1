@@ -225,12 +225,28 @@ function ApplyPSConsoleSettings {
 
     #
     # set the colors for the syntax-highlighting
-    if ( $PSVERSIONTABLE.PSVersion.Major -ge 5 ) {
-        # '$PSReadlineOptions' was introduced in PowerShell version 5
+    if (Get-Module -ListAvailable -Name "PSReadline") {
+        # PSReadline was introduced in PowerShell version 5
 
-        $Current = Get-PSReadLineOption
-        if ( "$current.CommandColor" -ne "" ) {
-            # the color properties changed from late PowerShell 5.1 versions onward
+        if ( [System.Version](Get-Module PSReadline).Version -lt [System.Version]"2.0.0" ) {
+            Set-PSReadLineOption -TokenKind 'Command' -ForegroundColor $CS.SyntaxCommandForegroundColor -BackgroundColor $CS.SyntaxCommandBackgroundColor
+            Set-PSReadLineOption -TokenKind 'Comment' -ForegroundColor $CS.SyntaxCommentForegroundColor -BackgroundColor $CS.SyntaxCommentBackgroundColor
+            Set-PSReadLineOption -TokenKind 'ContinuationPrompt' -ForegroundColor $CS.SyntaxContinuationPromptForegroundColor -BackgroundColor $CS.SyntaxContinuationPromptBackgroundColor
+            Set-PSReadLineOption -TokenKind 'DefaultToken' -ForegroundColor $CS.SyntaxDefaultForegroundColor -BackgroundColor $CS.SyntaxDefaultBackgroundColor
+            Set-PSReadLineOption -TokenKind 'Emphasis' -ForegroundColor $CS.SyntaxEmphasisForegroundColor -BackgroundColor $CS.SyntaxEmphasisBackgroundColor
+            Set-PSReadLineOption -TokenKind 'Error' -ForegroundColor $CS.SyntaxErrorForegroundColor -BackgroundColor $CS.SyntaxErrorBackgroundColor
+            Set-PSReadLineOption -TokenKind 'Keyword' -ForegroundColor $CS.SyntaxKeywordForegroundColor -BackgroundColor $CS.SyntaxKeywordBackgroundColor
+            Set-PSReadLineOption -TokenKind 'Member' -ForegroundColor $CS.SyntaxMemberForegroundColor -BackgroundColor $CS.SyntaxMemberBackgroundColor
+            Set-PSReadLineOption -TokenKind 'Number' -ForegroundColor $CS.SyntaxNumberForegroundColor -BackgroundColor $CS.SyntaxNumberBackgroundColor
+            Set-PSReadLineOption -TokenKind 'Operator' -ForegroundColor $CS.SyntaxOperatorForegroundColor -BackgroundColor $CS.SyntaxOperatorBackgroundColor
+            Set-PSReadLineOption -TokenKind 'Parameter' -ForegroundColor $CS.SyntaxParameterForegroundColor -BackgroundColor $CS.SyntaxParameterBackgroundColor
+            # Set-PSReadLineOption -TokenKind 'Selection' -ForegroundColor $CS.SyntaxSelectionForegroundColor -BackgroundColor $CS.SyntaxSelectionBackgroundColor
+            Set-PSReadLineOption -TokenKind 'String' -ForegroundColor $CS.SyntaxStringForegroundColor -BackgroundColor $CS.SyntaxStringBackgroundColor
+            Set-PSReadLineOption -TokenKind 'Type' -ForegroundColor $CS.SyntaxTypeForegroundColor -BackgroundColor $CS.SyntaxTypeBackgroundColor
+            Set-PSReadLineOption -TokenKind 'Variable' -ForegroundColor $CS.SyntaxVariableForegroundColor -BackgroundColor $CS.SyntaxVariableBackgroundColor
+        }
+        else {
+            # the PSReadLine version changed from Windows 10 build 1809 onward
 
             #
             # prepare VT code for syntax colors
