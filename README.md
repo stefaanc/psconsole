@@ -328,6 +328,9 @@ As explained in the [previous section](#the-color-palette), the colors of the co
 
 - `Get-Shortcut` is used by the other scripts.  It gets an object to modify the properties of a shortcut.
 
+  > :information_source:
+  > This is the age-old `Get-Link` you find in a lot of posts on this subject.  The link provided in most of these posts doesn't work anymore.  Luckily, Neil Pankey (and friends) did preserve or find this ( https://github.com/neilpa/cmd-colors-solarized/blob/master/Get-Link.ps1 ) - Thanks Neil :relieved:
+
 - `Set-SortcutColors`
 
   ```powershell
@@ -379,7 +382,7 @@ As explained in the [previous section](#the-color-palette), the colors of the co
 
 - `Write-ColorizedColors` shows the colors of the color-scheme of the current shell.
 
-- `Test-ColorizedColors` creates a folder `$ROOT/playground`, and in that folder a powershell-shortcut for every color-scheme.
+- `Test-ColorizedColors` creates a folder `$ROOT/playground`, and in that folder a powershell-shortcut for every color-scheme.  You can see the result [here](/docs/color-schemes.md).
 
 
 ### The colors of the output to streams
@@ -493,5 +496,6 @@ The mapping of foreground and background colors for the prompt is defined by pro
 ## For Further Investigation
 
 - Temper the traffic light colors (esp. `Traffic Green`) for use on light backgrounds, but keep it "popping"
+- Make the `Screen Text` color a little bit lighter, so the distance between normal and dim colors are a bit easier to see.
 - Monitor evolution of the `PSReadLine` version 2.0.0 module
 - Add script to set the console font and font-size
