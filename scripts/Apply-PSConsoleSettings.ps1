@@ -174,7 +174,7 @@ function ApplyPSConsoleSettings {
     #
     # pickup the console settings
     if ( $ROOT -eq $HOME ) {
-        $PSConsoleSettings = $( Get-Content -Raw -Path "$HOME/Documents/WindowsPowershell/psconsole.json" | ConvertFrom-Json )
+        $PSConsoleSettings = $( Get-Content -Raw -Path "$HOME/Documents/WindowsPowershell/console.json" | ConvertFrom-Json )
     }
     else {
         $PSConsoleSettings = $( Get-Content -Raw -Path "$ROOT/.psconsole.json" | ConvertFrom-Json )

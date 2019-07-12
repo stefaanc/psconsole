@@ -30,7 +30,7 @@ HOME
   |
   |-- Documents
   |     |-- WindowsPowerShell
-  |           |-- psconsole.json
+  |           |-- console.json
   |           |-- profile.ps1             # <<<<<<<<<< master profile
   |           |                           #            (incl. default-master profile)
   |           |-- scripts
@@ -73,7 +73,7 @@ You can find the master profile in the folder `~\Documents\WindowsPowerShell` in
 If the folder or file are not there, you should create it.  You can pick-up our profile from the `scripts` folder in this project (`@HOME-Documents-WindowsPowerShell_profile.ps1`) and rename it `profile.ps1`.  Remark that you may have to change the marked line at the end, pointing to the default-project profile.
 
 > :warning:  
-> you may also need to copy the corresponding `psconsole.json` used by the `Apply-PSConsoleSettings` script in our profile.  More info [here](#the-default-master profile).
+> you may also need to copy the corresponding `console.json` used by the `Apply-PSConsoleSettings` script in our profile.  More info [here](#the-default-master profile).
 
 We want to run a different profile depending on the current directory.
 
@@ -160,7 +160,7 @@ The last section in the master-profile is the default-master profile.  You can p
 - If we are not already somewhere under the home directory, we set the current directory to the home directory
 - We apply settings to the PowerShell console (see further)
   - for this, you need to copy the `Apply-PSConsoleSettings.ps1` script in the `scripts` folder of this project, and put it under the `~\Documents\WindowsPowerShell\scripts` folder on your machine.
-  - you also need to copy the `@HOME-Documents-WindowsPowerShell_psconsole.json` file in the `scripts` folder of this project to your `~\Documents\WindowsPowerShell` folder, and rename it `psconsole.json`
+  - you also need to copy the `@HOME-Documents-WindowsPowerShell_console.json` file in the `scripts` folder of this project to your `~\Documents\WindowsPowerShell` folder, and rename it `console.json`
 
 
 Our default master profile looks something like
