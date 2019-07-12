@@ -186,7 +186,7 @@ To control all of this, we use a script `Apply-PSConsoleSettings.ps1` in combina
 
 ### The window title and prompt
 
-> :warning:
+> :warning:  
 > In this and following sections, we will use the `Apply-PSConsoleSettings` script to set window titles and change colors.
 For this to work, you **MUST** copy the `@HOME_.psconsole.json` file to your home directory and rename it to `.psconsole.json`, **AND** do the same for any project folders where you want to use this script in your project-profile.
 
@@ -232,7 +232,7 @@ The color palette consists of 16 colors.  Default color-values are defined in a 
 > :bulb:  
 > The PowerShell shortcut can usually be found in the Start Menu: `"$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk"` (or with the `(x86)` suffix for the 32-bit version).
 
-To illustrate the difference between the color palettes when starting Powershell in different ways, below, we started the console from the command prompt
+To illustrate the difference between the color palettes when starting Powershell in different ways, below, we started the console from the Run app
 
 ![admin-console-via cmd.png](./docs/screenshots/admin-console-via-cmd.png)
 
@@ -278,7 +278,7 @@ ColorTable | Foreground ANSI/VT100 | Background ANSI/VT100 | PowerShell Name | L
 
 ### The colors of the console
 
-> :warning:
+> :warning:  
 > From Windows 10 build 1809 onward, the `PSReadline` module was upgraded from version 1.2 to a 2.0.0-beta version.  This beta version causes a lot of issues that cannot be worked around.  To make the following work, you **MUST** downgrade the `PSReadLine` module to version 1.2
 > 
 > - check if you have version 2.0.0
@@ -328,8 +328,8 @@ As explained in the [previous section](#the-color-palette), the colors of the co
 
 - `Get-Shortcut` is used by the other scripts.  It gets an object to modify the properties of a shortcut.
 
-  > :information_source:
-  > This is the age-old `Get-Link` you find in a lot of posts on this subject.  The link provided in most of these posts doesn't work anymore.  Luckily, Neil Pankey (and friends) did preserve or find this ( https://github.com/neilpa/cmd-colors-solarized/blob/master/Get-Link.ps1 ) - Thanks Neil :relieved:
+  > :information_source:  
+  > This is the age-old `Get-Link` you find in a lot of posts on this subject.  The link provided in most of these posts doesn't work anymore.  Luckily, Neil Pankey (and friends) did find and preserve this code ( https://github.com/neilpa/cmd-colors-solarized/blob/master/Get-Link.ps1 ) - Thanks Neil :relieved:
 
 - `Set-SortcutColors`
 
@@ -371,8 +371,8 @@ As explained in the [previous section](#the-color-palette), the colors of the co
   - We developed a number of color-schemes based on the very popular `Solarized` theme, but with a couple of modifications, and added more choices in background colors.  You can read more on the `Colorized` themes [here](/docs/color-schemes.md)
   - We also added a couple based on the traditional Powershell background color.
 
-    > :bulb:
-    > Remark that you need to run `Apply-PSConsoleSettings` in your profile with a `.psconsole.json` file, to make sure that the above palettte colors are correctly mapped on the colors for Powershell elements (stream output, syntax tokens and prompt).
+  > :warning:  
+  > Remark that you need to run `Apply-PSConsoleSettings` in your profile with a `.psconsole.json` file, to make sure that the above palettte colors are correctly mapped on the colors for Powershell elements (stream output, syntax tokens and prompt).
 
 - `Set-ShortcutWindowSize` sets the size of the windows and screen-buffer
 
@@ -387,7 +387,7 @@ As explained in the [previous section](#the-color-palette), the colors of the co
 
 ### The colors of the output to streams
 
-> :warning:
+> :warning:  
 > In the this and following sections, we will use the `Apply-PSConsoleSettings` script to set window titles and change colors.
 For this to work, you **MUST** copy the `@HOME_.psconsole.json` file to your home directory and rename it to `.psconsole.json`, **AND** do the same for any project folders where you want to use this script in your project-profile.
 
@@ -404,7 +404,8 @@ The `Apply-PSConsoleSettings` is used to map palette colors on the colors of the
     "LegacyColorScheme": {
         // ... mapping of 'powershell-legacy' and '-campbell' color-schemes on PowerShell elements in any console
     }
-}```
+}
+```
 
 The mapping of foreground and background colors for streams is defined by properties `"Stream*"`, for instance for the `"LegacyColorScheme"`
 

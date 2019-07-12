@@ -79,7 +79,7 @@ Dark Backgrounds         | Popup               | RGB                          | 
 `Colorized Dark-Blue`    | `Light-Chartreuse`  | `#0b0036` &emsp; (11, 0, 54) | (252, 100%, 21%)
 `Colorized Dark-Magenta` | `Light-SpringGreen` | `#36002b` &emsp; (54, 0, 43) | (312, 100%, 21%)
 
-- `Colorized Dark-Blue` is based on Solarized Dark
+- `Colorized Dark-Cyan` is based on Solarized Dark
 
 
 Light Backgrounds             | Popup          | RGB                              | HSV
@@ -147,7 +147,9 @@ Name             | RGB                           | HSV
 
 ### More Colors
 
-The following are definitions for the colors of other sources.  These can be used but they are not mapped on the 16 base colors, so one needs to use the RGB-hex code or find a corresponding VT100 code that is close to it.
+The following are definitions for the colors of the RGB and RYB color-wheels.  These can be used but they are not mapped on the 16 base colors, so one needs to use the RGB-hex code or find a VT100 code that is close to it.  They are added here for reference.
+
+![rgb-color-wheel.png](./screenshots/rgb-color-wheel.png)
 
 Name              | RGB                            | HSV
 :-----------------|:-------------------------------|:---
@@ -164,6 +166,8 @@ Name              | RGB                            | HSV
 `RGB Magenta`     | `#ff00ff` &emsp; (255, 0, 255) | (300, 100%, 100%)
 `RGB Rose`        | `#ff0080` &emsp; (255, 0, 128) | (330, 100%, 100%)
 
+![ryb-color-wheel.png](./screenshots/ryb-color-wheel.png)
+
 Name              | RGB                             | HSV
 :-----------------|:--------------------------------|:---
 `RYB Red`         | `#ff0000` &emsp; (255, 0, 0)    | (0, 100%, 100%)
@@ -173,8 +177,8 @@ Name              | RGB                             | HSV
 `RYB Yellow`      | `#ffff00` &emsp; (255, 255, 0)  | (60, 100%, 100%)
 `RYB Chartreuse`  | `#81d41a` &emsp; (129, 212, 26) | (87, 88%, 83%)
 `RYB Green`       | `#00a933` &emsp; (0, 169, 51)   | (138, 100%, 66%)
-`RYB Teal`        | `#158466` &emsp; (21, 132, 102) | (163, 84%, 52%)
-`RYB Blue`        | `#2a6099` &emsp; (42, 96, 153)  | (210, 73%, 60%)
+`RYB Teal`        | `#158466` &emsp; (21, 132, 102) | (164, 84%, 52%)
+`RYB Blue`        | `#2a6099` &emsp; (42, 96, 153)  | (211, 73%, 60%)
 `RYB Violet`      | `#55308d` &emsp; (85, 48, 141)  | (264, 66%, 55%)
 `RYB Purple`      | `#800080` &emsp; (128, 0, 128)  | (300, 100%, 50%)
 `RYB Magenta`     | `#bf0041` &emsp; (191, 0, 65)   | (340, 100%, 75%)
