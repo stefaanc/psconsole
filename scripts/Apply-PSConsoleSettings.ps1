@@ -172,8 +172,13 @@ function ApplyPSConsoleSettings {
     $IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
     #
-    # pickup the console settings and set console title
-    $PSConsoleSettings = $( Get-Content -Raw -Path "$ROOT/.psconsole.json" | ConvertFrom-Json )
+    # pickup the console settings
+    if ( $ROOT -eq $HOME ) {
+        $PSConsoleSettings = $( Get-Content -Raw -Path "$HOME/Documents/WindowsPowershell/psconsole.json" | ConvertFrom-Json )
+    }
+    else {
+        $PSConsoleSettings = $( Get-Content -Raw -Path "$ROOT/.psconsole.json" | ConvertFrom-Json )
+    }
 
     if ( ( $HOST.UI.RawUI.ForegroundColor -eq 'DarkYellow' ) -and ( $HOST.UI.RawUI.BackgroundColor -eq 'DarkMagenta' ) ) {
         # we are working with a legacy Powershell instance

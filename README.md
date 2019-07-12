@@ -30,6 +30,7 @@ HOME
   |
   |-- Documents
   |     |-- WindowsPowerShell
+  |           |-- psconsole.json
   |           |-- profile.ps1             # <<<<<<<<<< master profile
   |           |                           #            (incl. default-master profile)
   |           |-- scripts
@@ -69,7 +70,10 @@ You can find the master profile in the folder `~\Documents\WindowsPowerShell` in
 > :information_source:  
 > There are actually a number of profiles on your machine.  We are using the `CurrentUserAllHosts` profile here.  For more info, see https://docs.microsoft.com/en-gb/powershell/module/microsoft.powershell.core/about/about_profiles, but documentation doesn't always seem to line-up with what we see in a PowerShell console.
 
-If the folder or file are not there, you should create it.  You can pick-up our profile from the `scripts` folder in this project (`@Documents-WindowsPowerShell_profile.ps1`) and rename it `profile.ps1`.  Remark that you may have to change the marked line at the end, pointing to the default-project profile.
+If the folder or file are not there, you should create it.  You can pick-up our profile from the `scripts` folder in this project (`@HOME-Documents-WindowsPowerShell_profile.ps1`) and rename it `profile.ps1`.  Remark that you may have to change the marked line at the end, pointing to the default-project profile.
+
+> :warning:  
+> you may also need to copy the corresponding `psconsole.json` used by the `Apply-PSConsoleSettings` script in our profile.  More info [here](#the-default-master profile).
 
 We want to run a different profile depending on the current directory.
 
@@ -90,15 +94,18 @@ Assuming you don't use the `-NoProfile` option, PowerShell will always start exe
 
 ### The project profile
 
-Most of my projects use a profile that's very similar to the `.psprofile.ps1` in the root directory of this project.
+Most of my projects use a profile that's very similar to the `@HOME-Projects-myproject_.profile.ps1` in the `scripts` folder of this project.
 
 - We set `$ROOT` to the project directory
   - if you pick-up our script, you will need to adapt the path for `$ROOT`.
 - We add the `$ROOT\scripts` folder to `$env:PATH`
 - If we are not already somewhere under the project root-directory, we set the current directory to the project root-directory
 - We apply settings to the PowerShell console (see further)
-  - for this, you need to copy the `scripts` folder of this `psconsole` project under the `$ROOT\scripts` folder (you can drop the `*profile.ps1` scripts).
+  - for this, you need to copy the `Apply-PSConsoleSettings.ps1` script in the `scripts` folder of this project, and put it under the `$ROOT\scripts` folder in your project.
+  - you also need to copy the `@HOME-Projects-myproject_.profile.ps1` in the `scripts` folder of this project to you root folder, and rename it `.psconsole.json`
 
+
+Our project-profile looks something like
 
 ```powershell
 Set-Variable HOME "$env:USERPROFILE" -Scope Global -Force
@@ -118,7 +125,7 @@ Apply-PSConsoleSettings "PSCONSOLE"
 > The `$HOME` variable doesn't always seem to correctly populated, hence we set it in this profile. We experienced a lot of issues with this on different computers and with different versions of PowerShell (probably because of a lack of understanding?).  You can find more info about the `$HOME` variable here: https://docs.microsoft.com/en-gb/powershell/module/microsoft.powershell.core/about/about_automatic_variables, but the documentation doesn't always seem to line-up with what we see in a PowerShell console.
 > 
 > - By default we use `"$env:USERPROFILE"`.  Although this is in my experience the most reliable way, this variable may not be correctly set on your machine.  
-> - An alternative (this is what the PowerShell documentation states as the method it uses "automatically") is to use `"$env:HOMEDRIVE$env:HOMEPATH"`.  Again, this may not work properly on your machine.  
+> - An alternative (this is what the PowerShell documentation states as the method it uses "automatically") is to use `"$env:HOMEDRIVE$env:HOMEPATH"`.
 > - You can look for other variables in your environment (or add them) to help you create the correct `$HOME` variable.  
 > - You can look for solutions on the web.  
 > - Perhaps you need to update some registry items?  
@@ -132,6 +139,7 @@ Apply-PSConsoleSettings "PSCONSOLE"
 I like to put all my projects in a `~/Projects` folder so that is where I put my `.psprofile.ps1` file, but you can put it anywhere else and give it any name you want.  You can pick-up our profile from the `scripts` folder in this project (`@Projects_.psprofile.ps1`), rename it and adapt it.
 
 - If you are using our master profile, update the marked line at the end of the master profile.
+
 
 The job of the default-project profile is to select a default project and run its profile.  In our sample default-project profile, we list all our projects in comments in the script, and uncomment the project we consider our "default" at the moment (only uncomment projects that have a project-profile).  This makes it very easy to switch "default" projects.
 
@@ -151,8 +159,11 @@ The last section in the master-profile is the default-master profile.  You can p
 - We add the `~\Documents\WindowsPowerShell\scripts` folder to  `$env:PATH`
 - If we are not already somewhere under the home directory, we set the current directory to the home directory
 - We apply settings to the PowerShell console (see further)
-  - for this, you need to copy the `scripts` folder of this project under the `~\Documents\WindowsPowerShell` folder (you can drop the `*profile.ps1` scripts).
+  - for this, you need to copy the `Apply-PSConsoleSettings.ps1` script in the `scripts` folder of this project, and put it under the `~\Documents\WindowsPowerShell\scripts` folder on your machine.
+  - you also need to copy the `@HOME-Documents-WindowsPowerShell_psconsole.json` file in the `scripts` folder of this project to your `~\Documents\WindowsPowerShell` folder, and rename it `psconsole.json`
 
+
+Our default master profile looks something like
 
 ```powershell
 $global:ROOT = $HOME
