@@ -3,7 +3,7 @@
 #
 #     Set-ShortcutColors "$Path" "$Theme"
 #
-# with f.i. 'console-powershell-legacy.json'
+# with f.i. 'psconsole-powershell-legacy.json'
 #
 #     {
 #         "console": {
