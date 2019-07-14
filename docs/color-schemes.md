@@ -16,6 +16,11 @@ We based our main color-scheme  on the very successful "Solarized" theme (https:
     - `Orange` is mapped on the `Blue` Powershell name.  Remark that `Orange` is the RYB-complement of `Blue`.
     - `Violet` is mapped on the `Magenta` Powershell name.  This is kind of the wrong way around: `Magenta` is mapped on `DarkMagenta`, `Violet` - a kind of dark magenta - is mapped on `Magenta`.
 
+- we slightly modified some of the Solarized colors
+
+  - improved color-separation for light backgrounds, between `Red` & `Orange` and between `Yellow` and `Green`
+  - improved distance between `DarkGrey` (`base00`) and `Gray` (`base0`)
+
 - we added a number of alternative background colors - both in the dark and the light variant.  We rotated the `Hue` 30 degrees for each, and used same `Saturation` and lightness `Value`.
 
 ![colorized-dark.png](./screenshots/colorized-dark.png)
@@ -51,19 +56,23 @@ Name               | Solarized Light | RGB                       | HSV
 Name                           | Solarized Dark | RGB                        | HSV
 :------------------------------|:---------|:---------------------------------|:---
 `DimScreenText` (=`PopupText`) | `base00` | `#657b83` &emsp; (101, 123, 131) | (196, 23%, 51%)
-`ScreenText` (=`DimPopupText`) | `base0`  | `#839496` &emsp; (131, 148, 150) | (186, 13%, 59%)
+`ScreenText` (=`DimPopupText`) | `base0`  | `#91a4a6` &emsp; (145, 164, 166) | (186, 13%, 65%)
 `BrightScreenText`             | `base2`  | `#eee8d5` &emsp; (238, 232, 213) | (46, 11%, 93%)
 `PopupText` (=`DimScreenText`) | `base0`  | `#839496` &emsp; (131, 148, 150) | (186, 13%, 59%)
 `DimPopupText` (=`ScreenText`) | `base00` | `#657b83` &emsp; (101, 123, 131) | (195, 23%, 51%)
 
+- distance between `DimScreenText` (`base00`) and `ScreenText` (`base0`) sligtly improved vs Solarized
+
 
 Name                           | Solarized Light | RGB                       | HSV
 :------------------------------|:---------|:---------------------------------|:---
-`DimScreenText` (=`PopupText`) | `base0`  | `#839496` &emsp; (131, 148, 150) | (186, 13%, 59%)
+`DimScreenText` (=`PopupText`) | `base0`  | `#91a4a6` &emsp; (145, 164, 166) | (186, 13%, 65%)
 `ScreenText` (=`DimPopupText`) | `base00` | `#657b83` &emsp; (101, 123, 131) | (195, 23%, 51%)
 `BrightScreenText`             | `base02` | `#073642` &emsp; (7, 54, 66)     | (192, 89%, 26%)
 `PopupText` (=`DimScreenText`) | `base00` | `#657b83` &emsp; (101, 123, 131) | (195, 23%, 51%)
 `DimPopupText` (=`ScreenText`) | `base0`  | `#839496` &emsp; (131, 148, 150) | (186, 13%, 59%)
+
+- distance between `DimScreenText` (`base00`) and `ScreenText` (`base0`) sligtly improved vs Solarized
 
 
 <br/>
@@ -125,13 +134,15 @@ More Backgrounds    | Popup               | RGB                              | H
 Name             | RGB                              | HSV
 :----------------|:---------------------------------|:---
 `Red`            | `#dc322f` &emsp; (220, 50, 47)   | (1, 79%, 86%)
-`Orange`         | `#cb4b16` &emsp; (203, 75, 22)   | (18, 89%, 80%)
-`Yellow`         | `#b58900` &emsp; (181, 137, 0)   | (45, 100%, 71%)
-`Green`          | `#859900` &emsp; (133, 153, 0)   | (68, 100%, 60%)
+`Orange`         | `#cb6416` &emsp; (203, 100, 22)  | (26, 89%, 80%)
+`Yellow`         | `#b5a000` &emsp; (181, 160, 0)   | (53, 100%, 71%)
+`Green`          | `#389000` &emsp; (56, 153, 0)    | (98, 100%, 60%)
 `Cyan`           | `#2aa198` &emsp; (42, 161, 152)  | (175, 74%, 63%)
 `Blue`           | `#268bd2` &emsp; (38, 139, 210)  | (205, 82%, 82%)
 `Violet`         | `#6c71c4` &emsp; (108, 113, 196) | (237, 45%, 77%)
 `Magenta`        | `#d33682` &emsp; (211, 54, 130)  | (331, 74%, 83%)
+
+- color-separation for light backgrounds slightly improved vs Solarized, between `Red` & `Orange` and between `Yellow` and `Green`
 
 <br/>
 
@@ -140,8 +151,8 @@ Name             | RGB                              | HSV
 Name             | RGB                           | HSV
 :----------------|:------------------------------|:---
 `TrafficRed`     | `#ff0000` &emsp; (255, 0, 0)  | (0, 100%, 100%)
-`TrafficAmber`   | `#ffbf00` &emsp; (255, 191,0) | (45, 100%, 100%)
-`TrafficGreen`   | `#00ff00` &emsp; (0, 255, 0)  | (120, 100%, 100%)
+`TrafficAmber`   | `#f2b600` &emsp; (242, 182,0) | (45, 100%, 90%)
+`TrafficGreen`   | `#00cc00` &emsp; (0, 204, 0)  | (120, 100%, 80%)
 
 <br/>
 

@@ -507,7 +507,5 @@ The mapping of foreground and background colors for the prompt is defined by pro
 
 ## For Further Investigation
 
-- Temper the traffic light colors (esp. `Traffic Green`) for use on light backgrounds, but keep it "popping"
-- Make the `Screen Text` color a little bit lighter, so the distance between normal and dim colors are a bit easier to see.
 - Monitor evolution of the `PSReadLine` version 2.0.0 module
 - Add script to set the console font and font-size
