@@ -56,7 +56,7 @@ HOME
         .
         .
         |-- project-N
-        |     |-- .psconsole.json
+              |-- .psconsole.json
               |-- .psprofile.ps1          # <<<<<<<<<< project profile
               |
               |-- scripts
@@ -345,10 +345,10 @@ As explained in the [previous section](#the-color-palette), the colors of the co
 - `Set-SortcutColors`
 
   ```powershell
-  Set-ShortcutColors "$ROOT/playground/my-powershell.lnk" -Theme "$ROOT/colors/console-powershell-legacy.json"
+  Set-ShortcutColors "$ROOT/playground/my-powershell.lnk" -Theme "$ROOT/colors/psconsole-powershell-legacy.json"
   ```
 
-  themes are a json file, f.i. the `console-powershell-legacy.json` theme
+  themes are a json file, f.i. the `psconsole-powershell-legacy.json` theme
 
   ```javascript
   {
