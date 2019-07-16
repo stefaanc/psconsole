@@ -26,7 +26,6 @@ An overview of the profile structure
 
 ```text
 HOME
-  |-- .psconsole.json
   |
   |-- Documents
   |     |-- WindowsPowerShell
