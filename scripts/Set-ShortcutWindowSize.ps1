@@ -17,3 +17,5 @@ $lnk.SetScreenBufferSize($X, $ScreenBufferY)
 $lnk.SetWindowSize($X, $Y)
 
 $lnk.Save()
+
+exit 0

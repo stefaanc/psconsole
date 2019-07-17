@@ -76,3 +76,5 @@ Set-ShortcutWindowSize "$ROOT/playground/powershell-legacy" -Width 40 -Height 43
 New-Shortcut "$ROOT/playground/powershell-campbell" -TargetPath "$env:SystemRoot\system32\WindowsPowerShell\v1.0\powershell.exe" -Arguments "-NoProfile -NoExit `"$command`""
 Set-ShortcutColors "$ROOT/playground/powershell-campbell" -Theme "$ROOT/colors/psconsole-powershell-campbell.json"
 Set-ShortcutWindowSize "$ROOT/playground/powershell-campbell" -Width 40 -Height 43 -ScreenBufferHeight 43
+
+exit 0

@@ -3,7 +3,7 @@
 #
 #     Set-ShortcutColors "$Path" "$Theme"
 #
-# with f.i. 'psconsole-powershell-legacy.json'
+# with f.i. $Theme = "$ROOT\colors\psconsole-powershell-legacy.json"
 #
 #     {
 #         "console": {
@@ -69,3 +69,5 @@ $lnk.ConsoleColors[14] = $colors.console.ConsoleColors[14]
 $lnk.ConsoleColors[15] = $colors.console.ConsoleColors[15]
 
 $lnk.Save()
+
+exit 0

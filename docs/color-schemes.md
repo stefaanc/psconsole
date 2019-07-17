@@ -55,13 +55,13 @@ Name               | Solarized Light | RGB                       | HSV
 
 Name                           | Solarized Dark | RGB                        | HSV
 :------------------------------|:---------|:---------------------------------|:---
-`DimScreenText` (=`PopupText`) | `base00` | `#657b83` &emsp; (101, 123, 131) | (196, 23%, 51%)
+`DimScreenText` (=`PopupText`) | `base00` | `#657b83` &emsp; (101, 123, 131) | (195, 23%, 51%)
 `ScreenText` (=`DimPopupText`) | `base0`  | `#91a4a6` &emsp; (145, 164, 166) | (186, 13%, 65%)
 `BrightScreenText`             | `base2`  | `#eee8d5` &emsp; (238, 232, 213) | (46, 11%, 93%)
-`PopupText` (=`DimScreenText`) | `base0`  | `#839496` &emsp; (131, 148, 150) | (186, 13%, 59%)
-`DimPopupText` (=`ScreenText`) | `base00` | `#657b83` &emsp; (101, 123, 131) | (195, 23%, 51%)
+`PopupText` (=`DimScreenText`) | `base00` | `#657b83` &emsp; (101, 123, 131) | (195, 23%, 51%)
+`DimPopupText` (=`ScreenText`) | `base0`  | `#91a4a6` &emsp; (145, 164, 166) | (186, 13%, 65%)
 
-- distance between `DimScreenText` (`base00`) and `ScreenText` (`base0`) sligtly improved vs Solarized
+- distance between `DimScreenText` (`base00`) and `ScreenText` (`base0`) slightly improved vs Solarized
 
 
 Name                           | Solarized Light | RGB                       | HSV
@@ -69,10 +69,10 @@ Name                           | Solarized Light | RGB                       | H
 `DimScreenText` (=`PopupText`) | `base0`  | `#91a4a6` &emsp; (145, 164, 166) | (186, 13%, 65%)
 `ScreenText` (=`DimPopupText`) | `base00` | `#657b83` &emsp; (101, 123, 131) | (195, 23%, 51%)
 `BrightScreenText`             | `base02` | `#073642` &emsp; (7, 54, 66)     | (192, 89%, 26%)
-`PopupText` (=`DimScreenText`) | `base00` | `#657b83` &emsp; (101, 123, 131) | (195, 23%, 51%)
-`DimPopupText` (=`ScreenText`) | `base0`  | `#839496` &emsp; (131, 148, 150) | (186, 13%, 59%)
+`PopupText` (=`DimScreenText`) | `base0`  | `#91a4a6` &emsp; (145, 164, 166) | (186, 13%, 65%)
+`DimPopupText` (=`ScreenText`) | `base00` | `#657b83` &emsp; (101, 123, 131) | (195, 23%, 51%)
 
-- distance between `DimScreenText` (`base00`) and `ScreenText` (`base0`) sligtly improved vs Solarized
+- distance between `DimScreenText` (`base00`) and `ScreenText` (`base0`) slightly improved vs Solarized
 
 
 <br/>
@@ -148,11 +148,11 @@ Name             | RGB                              | HSV
 
 ### Traffic Colors
 
-Name             | RGB                           | HSV
-:----------------|:------------------------------|:---
-`TrafficRed`     | `#ff0000` &emsp; (255, 0, 0)  | (0, 100%, 100%)
-`TrafficAmber`   | `#f2b600` &emsp; (242, 182,0) | (45, 100%, 90%)
-`TrafficGreen`   | `#00cc00` &emsp; (0, 204, 0)  | (120, 100%, 80%)
+Name             | RGB                            | HSV
+:----------------|:-------------------------------|:---
+`TrafficRed`     | `#ff0000` &emsp; (255, 0, 0)   | (0, 100%, 100%)
+`TrafficAmber`   | `#f2b600` &emsp; (242, 182, 0) | (45, 100%, 90%)
+`TrafficGreen`   | `#00cc00` &emsp; (0, 204, 0)   | (120, 100%, 80%)
 
 <br/>
 
