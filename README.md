@@ -394,9 +394,9 @@ As explained in the [previous section](#the-color-palette), the colors of the co
 
 - `Test-ColorizedColors` creates a folder `$ROOT/playground`, and in that folder a powershell-shortcut for every color-scheme.  
 
-![colorized-dark.png](./screenshots/colorized-dark.png)
+![colorized-dark.png](/docs/screenshots/colorized-dark.png)
 
-![colorized-dark.png](./screenshots/colorized-light.png)
+![colorized-dark.png](/docs/screenshots/colorized-light.png)
 
 You can see a couple more results [here](/docs/color-schemes.md).
 
