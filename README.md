@@ -392,7 +392,16 @@ As explained in the [previous section](#the-color-palette), the colors of the co
 
 - `Write-ColorizedColors` shows the colors of the color-scheme of the current shell.
 
-- `Test-ColorizedColors` creates a folder `$ROOT/playground`, and in that folder a powershell-shortcut for every color-scheme.  You can see the result [here](/docs/color-schemes.md).
+- `Test-ColorizedColors` creates a folder `$ROOT/playground`, and in that folder a powershell-shortcut for every color-scheme.  
+
+![colorized-dark.png](./screenshots/colorized-dark.png)
+
+![colorized-dark.png](./screenshots/colorized-light.png)
+
+You can see a couple more results [here](/docs/color-schemes.md).
+
+> :bulb:
+> We made some [conversion tables to convert names between different systems](/docs/color-names.md).
 
 
 ### The colors of the output to streams
