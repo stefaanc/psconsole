@@ -32,7 +32,8 @@ We based our main color-scheme  on the very successful "Solarized" theme (https:
 ![colorized-dark.png](./screenshots/powershell.png)
 
 - Note that the `powershell-legacy` and `-campbell` color-schemes are not really part of the `Colorized` family, hence the unexpected blue color with the "Orange" text in the images.  This is because the orange color is mapped on the `Blue` script-name (see color-table), as explained higher.  
-- Remark also the yellow and the almost invisible magenta colors, which are the traditional PowerShell foreground and background colors, mapped on `DarkYellow` and `DarkMagenta` script-names (see color-table). 
+- Remark also the yellow and the almost invisible magenta colors, which are the traditional PowerShell foreground and background colors, mapped on `DarkYellow` and `DarkMagenta` script-names (see color-table).
+
 <br/>
 
 ### Background Colors

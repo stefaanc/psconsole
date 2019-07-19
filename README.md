@@ -331,7 +331,7 @@ As explained in the [previous section](#the-color-palette), the colors of the co
 - `New-Shortcut` creates a new shortcut.
 
   ```powershell
-  New-Shortcut "$ROOT/scripts/my-powershell.lnk" -TargetPath "$env:SystemRoot\system32\WindowsPowerShell\v1.0\powershell.exe"
+  New-Shortcut "$ROOT\scripts\my-powershell.lnk" -TargetPath "powershell.exe"
   ```
   - remark the name of the shortcut should be the **full** path to the shortcut, an the extension `.lnk` is optional.
   - have a look at the top of the script in the `scripts` folder for more parameters, f.i. `-Arguments` and `-WorkingDirectory`
@@ -341,10 +341,10 @@ As explained in the [previous section](#the-color-palette), the colors of the co
   > :information_source:  
   > This is the age-old `Get-Link` you find in a lot of posts on this subject.  The link provided in most of these posts doesn't work anymore.  Luckily, Neil Pankey (and friends) did find and preserve this code ( https://github.com/neilpa/cmd-colors-solarized/blob/master/Get-Link.ps1 ) - Thanks Neil :relieved:
 
-- `Set-SortcutColors`
+- `Set-PSConsoleColors`
 
   ```powershell
-  Set-ShortcutColors "$ROOT/playground/my-powershell.lnk" -Theme "$ROOT/colors/psconsole-powershell-legacy.json"
+  Set-PSConsoleColors "$ROOT/playground/my-powershell.lnk" -Theme "$ROOT/colors/psconsole-powershell-legacy.json"
   ```
 
   themes are a json file, f.i. the `psconsole-powershell-legacy.json` theme
@@ -384,10 +384,10 @@ As explained in the [previous section](#the-color-palette), the colors of the co
   > :warning:  
   > Remark that you need to run `Apply-PSConsoleSettings` in your profile with a `.psconsole.json` file, to make sure that the above palettte colors are correctly mapped on the colors for Powershell elements (stream output, syntax tokens and prompt).
 
-- `Set-ShortcutWindowSize` sets the size of the windows and screen-buffer
+- `Set-PSConsoleWindowSize` sets the size of the windows and screen-buffer
 
   ```powershell
-  Set-ShortcutWindowSize "$ROOT/scripts/my-powershell.lnk" -Width 120 -Height 50 -ScreenBufferHeight 5000
+  Set-PSConsoleWindowSize "$ROOT/scripts/my-powershell.lnk" -Width 120 -Height 50 -ScreenBufferHeight 5000
   ```
 
 - `Write-ColorizedColors` shows the colors of the color-scheme of the current shell.
