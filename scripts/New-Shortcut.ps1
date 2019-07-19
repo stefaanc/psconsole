@@ -1,9 +1,15 @@
 #
+# Copyright (c) 2019 Stefaan Coussement
+# MIT License
+#
+# more info: https://github.com/stefaanc/psconsole
+# more info: https://github.com/stefaanc/ptsession
+#
 # use:
 #
 #     New-Shortcut "$Path" "$TargetPath" [ "$Arguments" ]
 #
-#     Remark that the paths have to be **full** paths
+#     Remark that "$Path" has to be **full** path
 #
 # other optional parameters/switches:
 #

@@ -1,9 +1,14 @@
 #
+# Copyright (c) 2019 Stefaan Coussement
+# MIT License
+#
+# more info: https://github.com/stefaanc/psconsole
+#
 # use:
 #
-#     Set-ShortcutColors "$Path" "$Theme"
+#     Set-PSConsoleColors "$Path" [ -Theme "$Theme" ]
 #
-# with f.i. $Theme = "$ROOT\colors\psconsole-powershell-legacy.json"
+# with default $Theme = "$ROOT\colors\psconsole-powershell-legacy.json"
 #
 #     {
 #         "console": {
@@ -34,7 +39,7 @@
 #
 param(
     [Parameter(Mandatory=$true, Position=0)][string]$Path,
-    [Parameter(Mandatory=$true, Position=1)][string]$Theme
+    [Parameter(Position=1)][string]$Theme
 )
 
 $ErrorActionPreference = 'Stop'
