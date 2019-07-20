@@ -4,13 +4,12 @@ We based our main color-scheme  on the very successful "Solarized" theme (https:
 
 - we added more background colors so we can color code terminal backgrounds for different servers, clusters, etc ... , all using the same foreground colors.
 
-- we reduced the number of base colors to make room for the fully-saturized `TrafficRed`, `TrafficAmber` and `TrafficGreen` colors.  We really want to have some colors that pop when indicating an "Error", "Warning" or "Success".
+- we reduced the number of base colors to make room for the saturized `TrafficRed`, `TrafficAmber`, `TrafficGreen` and `TrafficBlue` colors.  We really want to have some colors that pop when indicating an "Error", "Warning", "Success" or "Debug".
 
 - we mappped the Solarized colors on the PowerShell color-names in a bit a different way than other Solarized projects.  We are not really planning to put this in the registry, so it is not important to map the colors on the current defaults of the console applications like Command Prompt, PowerShell, etc...  Instead, we tried to map them in a way we can remember when writing code - although there are a couple of cases where that is not really successful
 
   - we mapped screen-background color on `Black`, the screen-text color on `Gray` (a.k.a. `DarkWhite`), the popup-background color on `White` and the popup-text color on `DarkGray` (a.k.a. `LightBlack`)
-  - we mapped the bright-screen-text color for highlighting on `Cyan`
-  - we mapped most of the accent colors on the corresponding `Dark` colors, and the traffic colors on the corresponding `Light` colors (`TrafficAmber` -> `Yellow`).
+  - we mapped most of the accent colors on the corresponding `Dark` colors, and the traffic colors on the corresponding `Light` colors (`TrafficAmber` -> `Yellow`, `TrafficBlue` -> `Cyan`).
   - The exceptions to these "memorable" mappings are the colors from the RYB color-wheel.
   
     - `Orange` is mapped on the `Blue` Powershell name.  Remark that `Orange` is the RYB-complement of `Blue`.
@@ -58,7 +57,8 @@ Name                           | Solarized Dark | RGB                        | H
 :------------------------------|:---------|:---------------------------------|:---
 `DimScreenText` (=`PopupText`) | `base00` | `#657b83` &emsp; (101, 123, 131) | (195, 23%, 51%)
 `ScreenText` (=`DimPopupText`) | `base0`  | `#91a4a6` &emsp; (145, 164, 166) | (186, 13%, 65%)
-`BrightScreenText`             | `base2`  | `#eee8d5` &emsp; (238, 232, 213) | (46, 11%, 93%)
+`BrightScreenText`             | `base3`  | `#fdf6e3` &emsp; (253, 246, 227) | (44, 10%, 99%)
+`BrightPopupText`              | `base03` | `#002b36` &emsp; (0, 43, 54)     | (192, 100%, 21%)
 `PopupText` (=`DimScreenText`) | `base00` | `#657b83` &emsp; (101, 123, 131) | (195, 23%, 51%)
 `DimPopupText` (=`ScreenText`) | `base0`  | `#91a4a6` &emsp; (145, 164, 166) | (186, 13%, 65%)
 
@@ -69,7 +69,8 @@ Name                           | Solarized Light | RGB                       | H
 :------------------------------|:---------|:---------------------------------|:---
 `DimScreenText` (=`PopupText`) | `base0`  | `#91a4a6` &emsp; (145, 164, 166) | (186, 13%, 65%)
 `ScreenText` (=`DimPopupText`) | `base00` | `#657b83` &emsp; (101, 123, 131) | (195, 23%, 51%)
-`BrightScreenText`             | `base02` | `#073642` &emsp; (7, 54, 66)     | (192, 89%, 26%)
+`BrightScreenText`             | `base03` | `#002b36` &emsp; (0, 43, 54)     | (192, 100%, 21%)
+`BrightPopupText`              | `base3`  | `#fdf6e3` &emsp; (253, 246, 227) | (44, 10%, 99%)
 `PopupText` (=`DimScreenText`) | `base0`  | `#91a4a6` &emsp; (145, 164, 166) | (186, 13%, 65%)
 `DimPopupText` (=`ScreenText`) | `base00` | `#657b83` &emsp; (101, 123, 131) | (195, 23%, 51%)
 
@@ -110,24 +111,6 @@ More Backgrounds    | Popup               | RGB                              | H
 `Powershell-Light`  | `Powershell-Dark`   | `#ece3fc` &emsp; (236, 227, 252) | (260, 10%, 99%)
 
 
- BrightText for Backgrounds   | RGB                              | HSV
-:-----------------------------|:---------------------------------|:---
-`Colorized Dark-Red`          | `#d5dbee` &emsp; (213, 219, 238) | (225, 10%, 93%)
-`Colorized Dark-Yellow`       | `#e8d5ee` &emsp; (232, 213, 238) | (285, 10%, 93%)
-`Colorized Dark-Green`        | `#eed5db` &emsp; (238, 213, 219) | (345, 10%, 93%)
-`Colorized Dark-Cyan`         | `#eee8d5` &emsp; (238, 232, 213) | (45, 10%, 93%)
-`Colorized Dark-Blue`         | `#dbeed5` &emsp; (219, 238, 213) | (105, 10%, 93%)
-`Colorized Dark-Magenta`      | `#d5eee8` &emsp; (213, 238, 232) | (165, 10%, 93%)
-`Colorized Light-Orange`      | `#073642` &emsp; (7, 54, 66)     | (192, 90%, 26%)
-`Colorized Light-Chartreuse`  | `#130742` &emsp; (19, 7, 66)     | (252, 90%, 26%)
-`Colorized Light-SpringGreen` | `#420736` &emsp; (66, 7, 54)     | (312, 90%, 26%)
-`Colorized Light-Azure`       | `#421307` &emsp; (66, 19, 7)     | (12, 90%, 26%)
-`Colorized Light-Violet`      | `#364207` &emsp; (54, 66, 7)     | (72, 90%, 26%)
-`Colorized Light-Rose`        | `#074213` &emsp; (7, 66, 19)     | (132, 90%, 26%)
-`Powershell-Dark`             | `#ece3fc` &emsp; (236, 227, 252) | (260, 10%, 99%)
-`Powershell-Light`            | `#001636` &emsp; (0, 22, 54)     | (215, 100%, 21%)
-
-
 <br/>
 
 ### Accent Colors
@@ -152,8 +135,9 @@ Name             | RGB                              | HSV
 Name             | RGB                            | HSV
 :----------------|:-------------------------------|:---
 `TrafficRed`     | `#ff0000` &emsp; (255, 0, 0)   | (0, 100%, 100%)
-`TrafficAmber`   | `#f2b600` &emsp; (242, 182, 0) | (45, 100%, 90%)
+`TrafficAmber`   | `#e6ad00` &emsp; (230, 173, 0) | (45, 100%, 90%)
 `TrafficGreen`   | `#00cc00` &emsp; (0, 204, 0)   | (120, 100%, 80%)
+`TrafficBlue`    | `#00bfe6` &emsp; (0, 191, 230) | (190, 100%, 90%)
 
 <br/>
 
