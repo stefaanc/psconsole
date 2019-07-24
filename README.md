@@ -516,4 +516,4 @@ The mapping of foreground and background colors for the prompt is defined by pro
 ## For Further Investigation
 
 - Monitor evolution of the `PSReadLine` version 2.0.0 module
-- Add script to set the console font and font-size
+- Find way that works in Windows 10, to set the console font and font-size using a script
