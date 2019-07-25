@@ -57,19 +57,21 @@ $shortcut.Save()
 
 if ( $Admin ) {
     [System.IO.FileInfo]$Path = $Path
-    $TempFileName = [System.IO.Path]::GetRandomFileName()
-    $TempFile = [System.IO.FileInfo][System.IO.Path]::Combine($Path.Directory, $TempFileName)
-    $Writer = New-Object System.IO.FileStream $TempFile, ([System.IO.FileMode]::Create)
-    $Reader = $Path.OpenRead()
-    While ($Reader.Position -lt $Reader.Length) {
-        $Byte = $Reader.ReadByte()
-        If ($Reader.Position -eq 22) {$Byte = 34}
-        $Writer.WriteByte($Byte)
+    $tempFileName = [System.IO.Path]::GetRandomFileName()
+    $tempFile = [System.IO.FileInfo][System.IO.Path]::Combine($Path.Directory, $tempFileName)
+    $writer = New-Object System.IO.FileStream $tempFile, ([System.IO.FileMode]::Create)
+    $reader = $Path.OpenRead()
+    while ($reader.Position -lt $reader.Length) {
+        $byte = $reader.ReadByte()
+        if ( $reader.Position -eq 22 ) {
+            $byte = 34
+        }
+        $writer.WriteByte($byte)
     }
-    $Reader.Close()
-    $Writer.Close()
-    $Path.Delete()
-    Rename-Item -Path $TempFile -NewName $Path.Name | Out-Null
+    $reader.Close()
+    $writer.Close()
+    $path.Delete()
+    Rename-Item -Path $tempFile -NewName $path.Name | Out-Null
 }
 
 exit 0
