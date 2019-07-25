@@ -526,11 +526,11 @@ Apply-PSConsoleSettings "PSCONSOLE" -NoPrompt
   > The available fonts are specified in the registry under 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\TrueTypeFont'.  If if the font you want is not there, you can add it, but there are limitations to the fonts you can add.
 
   > :warning:  
-  > To be able to change the font programmatically in Windows 10, you need to enable the legacy behaviour of the console by changing the option `Use legacy console (requires relaunch)` in the properties.  This changes the `ForceV2` setting in `HKEY_CURRENT_USER\Console`, hence applies to all consoles you start after changing this.  
+  > To be able to change the font programmatically in Windows 10, you need to enable the legacy behaviour of the console by changing the `ForceV2` setting in `HKEY_CURRENT_USER\Console` to `0x00000000`.  Remark that this will apply to all consoles you start after changing this.  Alternatively for shortcuts, you can change `Use legacy console (requires relaunch)` under the `Options` tab in the properties of the shortcut.
   > When you set this option back after changing the font, the font settings will be preserved.  
   > Remark also that you need to restart your console after each change of this option.
 
-- `Set-PSConsoleFont` sets the font of a shortcut to PowerShell.  This enables the legacy-console option if required.  It also temporarily changes the command in the shortcut to run the above script and then set the original command back.
+- `Set-PSConsoleFont` sets the font of a shortcut to PowerShell.  This enables the legacy-console option if required.  It also temporarily changes the command in the shortcut to run the above script and then sets the original command back.
 
   ```powershell
   Set-PSConsoleFont "$ROOT/scripts/my-powershell.lnk" -Font "Lucida Console" -FontSize 14
@@ -543,4 +543,3 @@ Apply-PSConsoleSettings "PSCONSOLE" -NoPrompt
 ## For Further Investigation
 
 - Monitor evolution of the `PSReadLine` version 2.0.0 module
-- Find way that works in Windows 10, to set the console font and font-size using a script
