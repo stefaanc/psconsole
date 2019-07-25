@@ -15,6 +15,7 @@ Also, it is not really easy to find out how to change the colors for the PowerSh
 
 My requirements are:
 - Changing the colors of the PowerShell console
+- Changing the font used in the PowerShell console
 - Changing the window title for different projects (or project versions)
 - Changing the window title and the prompt when running as 'Administrator'
 - Changing the window title and the background color when working with different servers, VMs, clusters,...
@@ -181,7 +182,7 @@ Apply-PSConsoleSettings
 ## Console Properties
 
 There are lots of properties that can be changed, but we will focus on colors:
-- The color palette used by the console (as defined in the properties of a shortcut to PowerShell)
+- The color palette used by the console
 - The foreground and background colors of the console
 - The colors of the output to various streams
 - The colors used for syntax-highlighting
@@ -190,8 +191,16 @@ There are lots of properties that can be changed, but we will focus on colors:
 A couple of other properties we want to adapt
 - The title of the PowerShell console window, including an indication when we are running in elevated mode
 - An indication in the prompt when we are running in elevated mode
+- The window size
+- The font and font-size in the console
 
 To control all of this, we use a script `Apply-PSConsoleSettings.ps1` in combination with a JSON configuration file.  You can find the default configuration for a project in `$ROOT\.psconsole.json`.
+
+Some of these properties cannot be changed by a script like `Apply-PSConsoleSettings.ps1`, but can be changed in the registry (which we prefer not to do) or in the properties of a shortcut to PowerShell:
+- The color palette used by the console
+
+Finally, some of these properties can be both changed from within a console or in the shortcut to a console.  We elected to set the following in the properties of a shortcut:
+- The window size
 
 
 ### The color palette
@@ -313,10 +322,10 @@ As explained in the [previous section](#the-color-palette), the colors of the co
   > :information_source:  
   > This is the age-old `Get-Link` you find in a lot of posts on this subject.  The link provided in most of these posts doesn't work anymore.  Luckily, Neil Pankey (and friends) did find and preserve this code ( https://github.com/neilpa/cmd-colors-solarized/blob/master/Get-Link.ps1 ) - Thanks Neil :relieved:
 
-- `Set-PSConsoleColors`
+- `Set-ShortcutColors`
 
   ```powershell
-  Set-PSConsoleColors "$ROOT/playground/my-powershell.lnk" -Theme "$ROOT/colors/psconsole-powershell-legacy.json"
+  Set-ShortcutColors "$ROOT/playground/my-powershell.lnk" -Theme "$ROOT/colors/psconsole-powershell-legacy.json"
   ```
 
   themes are a json file, f.i. the `psconsole-powershell-legacy.json` theme
@@ -354,14 +363,12 @@ As explained in the [previous section](#the-color-palette), the colors of the co
   - We also added a couple based on the traditional Powershell background color.
 
   > :warning:  
-  > Remark that you need to run `Apply-PSConsoleSettings` in your profile with a `.psconsole.json` file, to make sure that the above palettte colors are correctly mapped on the colors for Powershell elements (stream output, syntax tokens and prompt).
+  > Remark that you need to run `Apply-PSConsoleSettings` in your profile with a `.psconsole.json` file, to make sure that the above palette colors are correctly mapped on the colors for Powershell elements (stream output, syntax tokens and prompt).
 
-- `Set-PSConsoleFont` sets the font - see [the font of the console](#the-font-of-the-console) section
-
-- `Set-PSConsoleWindowSize` sets the size of the windows and screen-buffer
+- `Set-ShortcutWindowSize` sets the size of the windows and screen-buffer
 
   ```powershell
-  Set-PSConsoleWindowSize "$ROOT/scripts/my-powershell.lnk" -Width 120 -Height 50 -ScreenBufferHeight 5000
+  Set-ShortcutWindowSize "$ROOT/scripts/my-powershell.lnk" -Width 120 -Height 50 -ScreenBufferHeight 5000
   ```
 
 - `Write-ColorizedColors` shows the colors of the color-scheme of the current shell.
@@ -381,8 +388,8 @@ You can see a couple more results [here](/docs/color-schemes.md).
 ### The colors of the output to streams
 
 > :warning:  
-> In the this and following sections, we will use the `Apply-PSConsoleSettings` script to set window titles and change colors.
-For this to work, you **MUST** copy the `@HOME_.psconsole.json` file to your home directory and rename it to `.psconsole.json`, **AND** do the same for any project folders where you want to use this script in your project-profile.
+> In the this and following sections, we will use the `Apply-PSConsoleSettings` script to set the colors.
+For this to work, you **MUST** copy the `@HOME-Projects-myproject_.psconsole.json` file to your home directory and rename it to `.psconsole.json`, **AND** do the same for any project folders where you want to use this script in your project-profile.
 
 The `Apply-PSConsoleSettings` is used to map palette colors on the colors of the output to the different PowerShell streams.  The mapping is defined in the `.psconsole.json` file in the `$ROOT` folder.  This file **MUST** have three sections:
 
@@ -488,8 +495,8 @@ The mapping of foreground and background colors for the prompt is defined by pro
 ### The window title and prompt
 
 > :warning:  
-> In this section, we will use the `Apply-PSConsoleSettings` script to set window title and change the prompt.
-For this to work, you **MUST** copy the `@HOME_.psconsole.json` file to your home directory and rename it to `.psconsole.json`, **AND** do the same for any project folders where you want to use this script in your project-profile.
+> In this section, we will use the `Apply-PSConsoleSettings` script to set the window title and the prompt.
+For this to work, you **MUST** copy the `@HOME-Projects-myproject_.psconsole.json` file to your home directory and rename it to `.psconsole.json`, **AND** do the same for any project folders where you want to use this script in your project-profile.
 
 To add the project name to the window title - for instance "PSCONSOLE"
 
@@ -516,27 +523,24 @@ Apply-PSConsoleSettings "PSCONSOLE" -NoPrompt
 
 ### The font of the console
 
-- `Set-ConsoleFont` sets the font in the current console
+> :warning:  
+> In this section, we will use the `Apply-PSConsoleSettings` script to set the font and font-size.
+For this to work, you **MUST** copy the `@HOME-Projects-myproject_.psconsole.json` file to your home directory and rename it to `.psconsole.json`, **AND** do the same for any project folders where you want to use this script in your project-profile.
 
-  ```powershell
-  Set-ConsoleFont "Lucida Console" 14
-  ```
+The font settings are defined in the `.psconsole.json` file in the `$ROOT` folder.  This file **MAY** have:
 
-  > :bulb:  
-  > The available fonts are specified in the registry under 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\TrueTypeFont'.  If if the font you want is not there, you can add it, but there are limitations to the fonts you can add.
+```javascript
+{
+    "Font": "Lucida Console",
+    "FontSize": 14
+}
+```
 
-  > :warning:  
-  > To be able to change the font programmatically in Windows 10, you need to enable the legacy behaviour of the console by changing the `ForceV2` setting in `HKEY_CURRENT_USER\Console` to `0x00000000`.  Remark that this will apply to all consoles you start after changing this.  Alternatively for shortcuts, you can change `Use legacy console (requires relaunch)` under the `Options` tab in the properties of the shortcut.
-  > When you set this option back after changing the font, the font settings will be preserved.  
-  > Remark also that you need to restart your console after each change of this option.
+`"Lucida Console"` is the default value for the font, `14` is the default value for the font-size.
 
-- `Set-PSConsoleFont` sets the font of a shortcut to PowerShell.  This enables the legacy-console option if required.  It also temporarily changes the command in the shortcut to run the above script and then sets the original command back.
+> :bulb:  
+> The available fonts are specified in the registry under 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\TrueTypeFont'.  If the font you want is not there, you can add it, but there are limitations on the fonts that can be added.
 
-  ```powershell
-  Set-PSConsoleFont "$ROOT/scripts/my-powershell.lnk" -Font "Lucida Console" -FontSize 14
-  ```
-
-  Remark that `"Lucida Console"` is the default value for the font, `14` is the default value for the font-size.
 
 <br/>
 
